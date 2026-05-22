@@ -45,7 +45,7 @@
 
 .map-indicators-row {
   display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg);
-  margin-bottom: var(--space-xl); min-height: 520px;
+  margin-bottom: var(--space-lg); height: 560px;
 }
 .map-col { min-width: 0; display: flex; }
 .map-col > * { flex: 1; }
@@ -184,6 +184,7 @@
 .row-assoc-partner {
   display: grid; gap: var(--space-lg);
   margin-bottom: var(--space-xl);
+  margin-top: var(--space-lg);
 }
 .assoc-section {
   background: var(--bg-surface); border-radius: var(--radius-lg);
@@ -194,9 +195,14 @@
   background: var(--bg-surface); border-radius: var(--radius-lg);
   padding: var(--space-lg); border: 1px solid var(--border);
   overflow: hidden; min-width: 0;
+  display: flex;
+  flex-direction: column;
+  max-height: 560px;
 }
 .partner-table-wrapper {
-  max-height: 360px; overflow-y: auto;
+  max-height: 460px;
+  overflow-y: auto;
+  flex: 1;
 }
 .partner-table-wrapper::-webkit-scrollbar { width: 4px; }
 .partner-table-wrapper::-webkit-scrollbar-track { background: transparent; }
@@ -433,14 +439,125 @@
 }
 .visit-retry-btn:hover { border-color: var(--accent); color: var(--accent); }
 
-/* === B4 Customer List === */
+/* === Territory Overview === */
+.territory-overview-section {
+  padding: var(--space-lg);
+}
+.territory-overview-stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  flex: 1;
+  justify-content: center;
+}
+.overview-stat-item {
+  background: var(--bg-body);
+  border-radius: var(--radius);
+  padding: var(--space-md);
+  border: 1px solid var(--border-light);
+}
+.overview-stat-label {
+  font-size: 12px;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+.overview-stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--brand-600);
+  margin-bottom: 4px;
+}
+.overview-stat-trend {
+  font-size: 11px;
+  font-weight: 600;
+}
+.overview-stat-trend.up {
+  color: var(--success);
+}
+.overview-stat-trend.down {
+  color: var(--danger);
+}
+.overview-stat-sub {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+.channel-progress-bar {
+  height: 8px;
+  background: var(--border-light);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 6px;
+  margin-bottom: 4px;
+}
+.channel-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--success), #22c55e);
+  border-radius: 4px;
+  transition: width 400ms var(--ease-out);
+}
+.channel-progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+/* === B4 Customer Management === */
 .b4-customers-section {
   margin-bottom: var(--space-xl);
+}
+.b4-management-card {
+  padding: var(--space-lg);
+}
+.b4-management-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+.b4-sub-card {
+  background: var(--bg-body);
+  border-radius: var(--radius);
+  border: 1px solid var(--border-light);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+.b4-sub-card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--border-light);
+}
+.b4-left-card {
+  min-width: 0;
+}
+.b4-left-scroll {
+  flex: 1;
+  max-height: 460px;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+.b4-right-card {
+  min-width: 0;
+}
+.b4-right-scroll {
+  flex: 1;
+  max-height: 460px;
+  overflow-x: auto;
+  overflow-y: auto;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
 }
 .b4-filter-bar {
   display: flex;
   gap: var(--space-sm);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
   align-items: center;
 }
 .b4-filter-select {
@@ -448,7 +565,7 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   font-size: 12px;
-  background: var(--bg-body);
+  background: var(--bg-surface);
   color: var(--text-primary);
   cursor: pointer;
   transition: border 150ms;
@@ -462,7 +579,7 @@
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   font-size: 12px;
-  background: var(--bg-body);
+  background: var(--bg-surface);
   color: var(--text-primary);
   transition: border 150ms;
 }
@@ -471,13 +588,11 @@
   border-color: var(--accent);
 }
 .b4-table-wrapper {
-  max-height: 320px;
-  overflow-y: auto;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  overflow: auto;
 }
 .b4-table-wrapper::-webkit-scrollbar {
   width: 4px;
+  height: 4px;
 }
 .b4-table-wrapper::-webkit-scrollbar-track {
   background: transparent;
@@ -489,7 +604,7 @@
 .b4-table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed;
+  min-width: 800px;
 }
 .b4-table th {
   text-align: left;
@@ -504,14 +619,6 @@
   background: var(--bg-surface);
   z-index: 10;
 }
-.b4-table th:nth-child(1) { width: 22%; }
-.b4-table th:nth-child(2) { width: 10%; }
-.b4-table th:nth-child(3) { width: 8%; }
-.b4-table th:nth-child(4) { width: 10%; }
-.b4-table th:nth-child(5) { width: 10%; }
-.b4-table th:nth-child(6) { width: 9%; }
-.b4-table th:nth-child(7) { width: 10%; }
-.b4-table th:nth-child(8) { width: 21%; }
 .b4-table td {
   padding: var(--space-sm) var(--space-md);
   font-size: 12px;
@@ -520,6 +627,12 @@
 }
 .b4-table tr:hover {
   background: var(--accent-subtle);
+}
+.b4-row-highlight {
+  background: rgba(34, 197, 94, 0.06) !important;
+}
+.b4-row-highlight:hover {
+  background: rgba(34, 197, 94, 0.12) !important;
 }
 .b4-customer-name {
   font-weight: 600;
@@ -547,21 +660,22 @@
   background: var(--bg-body);
   color: var(--text-muted);
 }
-.b4-status {
+.b4-outreach-type {
   font-size: 10px;
   font-weight: 600;
   padding: 2px 8px;
   border-radius: 4px;
+  white-space: nowrap;
 }
-.status-following {
-  background: var(--accent-light);
-  color: var(--accent);
+.outreach-hiz {
+  background: #e0e7ff;
+  color: #4338ca;
 }
-.status-negotiating {
-  background: var(--success-light);
-  color: var(--success);
+.outreach-visit {
+  background: #dcfce7;
+  color: #15803d;
 }
-.status-initial {
+.outreach-none {
   background: var(--bg-body);
   color: var(--text-muted);
 }

@@ -240,45 +240,55 @@ const partnerMarkerData: {
   { id: 'CH-020', name: '上海盛美电子', level: '铜牌', value: [121.425, 31.235], status: '一般', monthlySTI: 78, lockRate: 46, attachRate: 22, visitStatus: '超过1月', lastVisit: '2026-03-18' },
 ]
 
-// B4 客户清单数据
+// B4 客户经营数据
+type OutreachType = '嗨掌柜' | '辖区经理拜访' | '未触达'
+
 const b4Customers: {
   id: string; name: string; industry: string; potential: string;
   currentRevenue: number; potentialRevenue: number; lastContact: string;
-  status: string; owner: string; nextAction: string;
+  outreachType: OutreachType; outreachTime: string; leadCount: number; opportunityCount: number;
 }[] = [
-  { id: 'B4-001', name: '上海华信科技有限公司', industry: '制造业', potential: '高', currentRevenue: 120, potentialRevenue: 500, lastContact: '2026-05-06', status: '跟进中', owner: '黄俊', nextAction: '方案演示' },
-  { id: 'B4-002', name: '上海浦东发展银行股份有限公司', industry: '金融', potential: '高', currentRevenue: 0, potentialRevenue: 800, lastContact: '2026-05-05', status: '初步接触', owner: '黄俊', nextAction: '需求调研' },
-  { id: 'B4-003', name: '上海微电子装备有限公司', industry: '半导体', potential: '高', currentRevenue: 200, potentialRevenue: 600, lastContact: '2026-05-04', status: '跟进中', owner: '黄俊', nextAction: '技术交流' },
-  { id: 'B4-004', name: '中芯国际集成电路制造', industry: '半导体', potential: '高', currentRevenue: 350, potentialRevenue: 1200, lastContact: '2026-05-03', status: '谈判中', owner: '黄俊', nextAction: '商务谈判' },
-  { id: 'B4-005', name: '上海汽车集团股份有限公司', industry: '汽车', potential: '高', currentRevenue: 180, potentialRevenue: 900, lastContact: '2026-05-02', status: '跟进中', owner: '黄俊', nextAction: '产品试用' },
-  { id: 'B4-006', name: '交通银行股份有限公司', industry: '金融', potential: '高', currentRevenue: 0, potentialRevenue: 750, lastContact: '2026-05-01', status: '初步接触', owner: '黄俊', nextAction: '高层拜访' },
-  { id: 'B4-007', name: '上海电气集团股份有限公司', industry: '装备制造', potential: '高', currentRevenue: 280, potentialRevenue: 850, lastContact: '2026-04-30', status: '跟进中', owner: '黄俊', nextAction: '方案优化' },
-  { id: 'B4-008', name: '拼多多网络科技有限公司', industry: '互联网', potential: '高', currentRevenue: 150, potentialRevenue: 650, lastContact: '2026-04-29', status: '谈判中', owner: '黄俊', nextAction: '合同审核' },
-  { id: 'B4-009', name: '上海医药集团股份有限公司', industry: '医药', potential: '高', currentRevenue: 220, potentialRevenue: 700, lastContact: '2026-04-28', status: '跟进中', owner: '黄俊', nextAction: '样品测试' },
-  { id: 'B4-010', name: '携程计算机技术有限公司', industry: '互联网', potential: '高', currentRevenue: 190, potentialRevenue: 580, lastContact: '2026-04-27', status: '跟进中', owner: '黄俊', nextAction: '方案演示' },
-  { id: 'B4-011', name: '上海宝钢股份有限公司', industry: '钢铁', potential: '中', currentRevenue: 320, potentialRevenue: 680, lastContact: '2026-04-26', status: '跟进中', owner: '黄俊', nextAction: '技术对接' },
-  { id: 'B4-012', name: '东方财富证券股份有限公司', industry: '金融', potential: '高', currentRevenue: 0, potentialRevenue: 520, lastContact: '2026-04-25', status: '初步接触', owner: '黄俊', nextAction: '需求沟通' },
-  { id: 'B4-013', name: '上海机场集团股份有限公司', industry: '交通', potential: '中', currentRevenue: 260, potentialRevenue: 620, lastContact: '2026-04-24', status: '跟进中', owner: '黄俊', nextAction: '方案调整' },
-  { id: 'B4-014', name: '上海复星医药有限公司', industry: '医药', potential: '高', currentRevenue: 175, potentialRevenue: 590, lastContact: '2026-04-23', status: '谈判中', owner: '黄俊', nextAction: '价格谈判' },
-  { id: 'B4-015', name: '上海建工集团股份有限公司', industry: '建筑', potential: '中', currentRevenue: 240, potentialRevenue: 560, lastContact: '2026-04-22', status: '跟进中', owner: '黄俊', nextAction: '现场考察' },
-  { id: 'B4-016', name: '圆通速递股份有限公司', industry: '物流', potential: '中', currentRevenue: 130, potentialRevenue: 480, lastContact: '2026-04-21', status: '跟进中', owner: '黄俊', nextAction: '方案优化' },
-  { id: 'B4-017', name: '上海光明食品集团', industry: '食品', potential: '中', currentRevenue: 95, potentialRevenue: 420, lastContact: '2026-04-20', status: '初步接触', owner: '黄俊', nextAction: '产品推介' },
-  { id: 'B4-018', name: '上海家化联合股份有限公司', industry: '日化', potential: '中', currentRevenue: 110, potentialRevenue: 450, lastContact: '2026-04-19', status: '跟进中', owner: '黄俊', nextAction: '样品提供' },
-  { id: 'B4-019', name: '申能股份有限公司', industry: '能源', potential: '高', currentRevenue: 290, potentialRevenue: 820, lastContact: '2026-04-18', status: '谈判中', owner: '黄俊', nextAction: '商务洽谈' },
-  { id: 'B4-020', name: '上海临港经济发展集团', industry: '园区开发', potential: '高', currentRevenue: 0, potentialRevenue: 950, lastContact: '2026-04-17', status: '初步接触', owner: '黄俊', nextAction: '战略沟通' },
-  { id: 'B4-021', name: '上海张江高科技园区开发', industry: '园区开发', potential: '高', currentRevenue: 160, potentialRevenue: 720, lastContact: '2026-04-16', status: '跟进中', owner: '黄俊', nextAction: '园区考察' },
-  { id: 'B4-022', name: '上海外高桥保税区开发', industry: '园区开发', potential: '中', currentRevenue: 185, potentialRevenue: 540, lastContact: '2026-04-15', status: '跟进中', owner: '黄俊', nextAction: '需求确认' },
-  { id: 'B4-023', name: '上海隧道工程股份有限公司', industry: '建筑', potential: '中', currentRevenue: 210, potentialRevenue: 510, lastContact: '2026-04-14', status: '跟进中', owner: '黄俊', nextAction: '技术方案' },
-  { id: 'B4-024', name: '上海华谊集团股份有限公司', industry: '化工', potential: '中', currentRevenue: 145, potentialRevenue: 470, lastContact: '2026-04-13', status: '初步接触', owner: '黄俊', nextAction: '产品演示' },
-  { id: 'B4-025', name: '上海锦江国际酒店发展', industry: '酒店', potential: '中', currentRevenue: 125, potentialRevenue: 490, lastContact: '2026-04-12', status: '跟进中', owner: '黄俊', nextAction: '方案沟通' },
-  { id: 'B4-026', name: '上海豫园旅游商城股份', industry: '商业', potential: '中', currentRevenue: 105, potentialRevenue: 430, lastContact: '2026-04-11', status: '跟进中', owner: '黄俊', nextAction: '商务拜访' },
-  { id: 'B4-027', name: '上海兰生股份有限公司', industry: '贸易', potential: '中', currentRevenue: 88, potentialRevenue: 380, lastContact: '2026-04-10', status: '初步接触', owner: '黄俊', nextAction: '需求调研' },
-  { id: 'B4-028', name: '上海开开实业股份有限公司', industry: '纺织', potential: '低', currentRevenue: 65, potentialRevenue: 320, lastContact: '2026-04-09', status: '跟进中', owner: '黄俊', nextAction: '产品推介' },
-  { id: 'B4-029', name: '上海三枪集团股份有限公司', industry: '纺织', potential: '低', currentRevenue: 72, potentialRevenue: 340, lastContact: '2026-04-08', status: '初步接触', owner: '黄俊', nextAction: '初步沟通' },
-  { id: 'B4-030', name: '上海龙头集团股份有限公司', industry: '纺织', potential: '低', currentRevenue: 58, potentialRevenue: 290, lastContact: '2026-04-07', status: '跟进中', owner: '黄俊', nextAction: '方案准备' },
-  { id: 'B4-031', name: '上海友谊集团股份有限公司', industry: '商业', potential: '中', currentRevenue: 98, potentialRevenue: 410, lastContact: '2026-04-06', status: '跟进中', owner: '黄俊', nextAction: '商务洽谈' },
-  { id: 'B4-032', name: '上海第一百货商店股份', industry: '商业', potential: '中', currentRevenue: 115, potentialRevenue: 440, lastContact: '2026-04-05', status: '谈判中', owner: '黄俊', nextAction: '合同准备' },
+  { id: 'B4-001', name: '上海华信科技有限公司', industry: '制造业', potential: '高', currentRevenue: 120, potentialRevenue: 500, lastContact: '2026-05-06', outreachType: '嗨掌柜', outreachTime: '2026-05-06 09:30', leadCount: 5, opportunityCount: 2 },
+  { id: 'B4-002', name: '上海浦东发展银行股份有限公司', industry: '金融', potential: '高', currentRevenue: 0, potentialRevenue: 800, lastContact: '2026-05-05', outreachType: '辖区经理拜访', outreachTime: '2026-05-05 14:00', leadCount: 8, opportunityCount: 3 },
+  { id: 'B4-003', name: '上海微电子装备有限公司', industry: '半导体', potential: '高', currentRevenue: 200, potentialRevenue: 600, lastContact: '2026-05-04', outreachType: '嗨掌柜', outreachTime: '2026-05-04 10:30', leadCount: 6, opportunityCount: 2 },
+  { id: 'B4-004', name: '中芯国际集成电路制造', industry: '半导体', potential: '高', currentRevenue: 350, potentialRevenue: 1200, lastContact: '2026-05-03', outreachType: '辖区经理拜访', outreachTime: '2026-05-03 16:00', leadCount: 12, opportunityCount: 5 },
+  { id: 'B4-005', name: '上海汽车集团股份有限公司', industry: '汽车', potential: '高', currentRevenue: 180, potentialRevenue: 900, lastContact: '2026-05-02', outreachType: '嗨掌柜', outreachTime: '2026-05-02 11:00', leadCount: 7, opportunityCount: 3 },
+  { id: 'B4-006', name: '交通银行股份有限公司', industry: '金融', potential: '高', currentRevenue: 0, potentialRevenue: 750, lastContact: '2026-05-01', outreachType: '未触达', outreachTime: '——', leadCount: 0, opportunityCount: 0 },
+  { id: 'B4-007', name: '上海电气集团股份有限公司', industry: '装备制造', potential: '高', currentRevenue: 280, potentialRevenue: 850, lastContact: '2026-04-30', outreachType: '辖区经理拜访', outreachTime: '2026-04-30 09:00', leadCount: 9, opportunityCount: 4 },
+  { id: 'B4-008', name: '拼多多网络科技有限公司', industry: '互联网', potential: '高', currentRevenue: 150, potentialRevenue: 650, lastContact: '2026-04-29', outreachType: '嗨掌柜', outreachTime: '2026-04-29 15:30', leadCount: 4, opportunityCount: 2 },
+  { id: 'B4-009', name: '上海医药集团股份有限公司', industry: '医药', potential: '高', currentRevenue: 220, potentialRevenue: 700, lastContact: '2026-04-28', outreachType: '辖区经理拜访', outreachTime: '2026-04-28 13:30', leadCount: 6, opportunityCount: 3 },
+  { id: 'B4-010', name: '携程计算机技术有限公司', industry: '互联网', potential: '高', currentRevenue: 190, potentialRevenue: 580, lastContact: '2026-04-27', outreachType: '嗨掌柜', outreachTime: '2026-04-27 10:00', leadCount: 5, opportunityCount: 2 },
+  { id: 'B4-011', name: '上海宝钢股份有限公司', industry: '钢铁', potential: '中', currentRevenue: 320, potentialRevenue: 680, lastContact: '2026-04-26', outreachType: '未触达', outreachTime: '——', leadCount: 0, opportunityCount: 0 },
+  { id: 'B4-012', name: '东方财富证券股份有限公司', industry: '金融', potential: '高', currentRevenue: 0, potentialRevenue: 520, lastContact: '2026-04-25', outreachType: '未触达', outreachTime: '——', leadCount: 0, opportunityCount: 0 },
+  { id: 'B4-013', name: '上海机场集团股份有限公司', industry: '交通', potential: '中', currentRevenue: 260, potentialRevenue: 620, lastContact: '2026-04-24', outreachType: '辖区经理拜访', outreachTime: '2026-04-24 11:30', leadCount: 4, opportunityCount: 1 },
+  { id: 'B4-014', name: '上海复星医药有限公司', industry: '医药', potential: '高', currentRevenue: 175, potentialRevenue: 590, lastContact: '2026-04-23', outreachType: '嗨掌柜', outreachTime: '2026-04-23 16:30', leadCount: 5, opportunityCount: 2 },
+  { id: 'B4-015', name: '上海建工集团股份有限公司', industry: '建筑', potential: '中', currentRevenue: 240, potentialRevenue: 560, lastContact: '2026-04-22', outreachType: '未触达', outreachTime: '——', leadCount: 0, opportunityCount: 0 },
+  { id: 'B4-016', name: '圆通速递股份有限公司', industry: '物流', potential: '中', currentRevenue: 130, potentialRevenue: 480, lastContact: '2026-04-21', outreachType: '辖区经理拜访', outreachTime: '2026-04-21 09:30', leadCount: 3, opportunityCount: 1 },
+  { id: 'B4-017', name: '上海光明食品集团', industry: '食品', potential: '中', currentRevenue: 95, potentialRevenue: 420, lastContact: '2026-04-20', outreachType: '未触达', outreachTime: '——', leadCount: 0, opportunityCount: 0 },
+  { id: 'B4-018', name: '上海家化联合股份有限公司', industry: '日化', potential: '中', currentRevenue: 110, potentialRevenue: 450, lastContact: '2026-04-19', outreachType: '嗨掌柜', outreachTime: '2026-04-19 14:00', leadCount: 3, opportunityCount: 1 },
+  { id: 'B4-019', name: '申能股份有限公司', industry: '能源', potential: '高', currentRevenue: 290, potentialRevenue: 820, lastContact: '2026-04-18', outreachType: '辖区经理拜访', outreachTime: '2026-04-18 10:30', leadCount: 7, opportunityCount: 3 },
+  { id: 'B4-020', name: '上海临港经济发展集团', industry: '园区开发', potential: '高', currentRevenue: 0, potentialRevenue: 950, lastContact: '2026-04-17', outreachType: '未触达', outreachTime: '——', leadCount: 0, opportunityCount: 0 },
+  { id: 'B4-021', name: '上海张江高科技园区开发', industry: '园区开发', potential: '高', currentRevenue: 160, potentialRevenue: 720, lastContact: '2026-04-16', outreachType: '嗨掌柜', outreachTime: '2026-04-16 15:00', leadCount: 8, opportunityCount: 3 },
+  { id: 'B4-022', name: '上海外高桥保税区开发', industry: '园区开发', potential: '中', currentRevenue: 185, potentialRevenue: 540, lastContact: '2026-04-15', outreachType: '辖区经理拜访', outreachTime: '2026-04-15 11:00', leadCount: 4, opportunityCount: 2 },
+  { id: 'B4-023', name: '上海隧道工程股份有限公司', industry: '建筑', potential: '中', currentRevenue: 210, potentialRevenue: 510, lastContact: '2026-04-14', outreachType: '未触达', outreachTime: '——', leadCount: 0, opportunityCount: 0 },
+  { id: 'B4-024', name: '上海华谊集团股份有限公司', industry: '化工', potential: '中', currentRevenue: 145, potentialRevenue: 470, lastContact: '2026-04-13', outreachType: '未触达', outreachTime: '——', leadCount: 0, opportunityCount: 0 },
+  { id: 'B4-025', name: '上海锦江国际酒店发展', industry: '酒店', potential: '中', currentRevenue: 125, potentialRevenue: 490, lastContact: '2026-04-12', outreachType: '嗨掌柜', outreachTime: '2026-04-12 09:00', leadCount: 2, opportunityCount: 1 },
+  { id: 'B4-026', name: '上海豫园旅游商城股份', industry: '商业', potential: '中', currentRevenue: 105, potentialRevenue: 430, lastContact: '2026-04-11', outreachType: '辖区经理拜访', outreachTime: '2026-04-11 13:30', leadCount: 3, opportunityCount: 1 },
+  { id: 'B4-027', name: '上海兰生股份有限公司', industry: '贸易', potential: '中', currentRevenue: 88, potentialRevenue: 380, lastContact: '2026-04-10', outreachType: '未触达', outreachTime: '——', leadCount: 0, opportunityCount: 0 },
+  { id: 'B4-028', name: '上海开开实业股份有限公司', industry: '纺织', potential: '低', currentRevenue: 65, potentialRevenue: 320, lastContact: '2026-04-09', outreachType: '未触达', outreachTime: '——', leadCount: 0, opportunityCount: 0 },
+  { id: 'B4-029', name: '上海三枪集团股份有限公司', industry: '纺织', potential: '低', currentRevenue: 72, potentialRevenue: 340, lastContact: '2026-04-08', outreachType: '未触达', outreachTime: '——', leadCount: 0, opportunityCount: 0 },
+  { id: 'B4-030', name: '上海龙头集团股份有限公司', industry: '纺织', potential: '低', currentRevenue: 58, potentialRevenue: 290, lastContact: '2026-04-07', outreachType: '未触达', outreachTime: '——', leadCount: 0, opportunityCount: 0 },
+  { id: 'B4-031', name: '上海友谊集团股份有限公司', industry: '商业', potential: '中', currentRevenue: 98, potentialRevenue: 410, lastContact: '2026-04-06', outreachType: '嗨掌柜', outreachTime: '2026-04-06 16:00', leadCount: 3, opportunityCount: 1 },
+  { id: 'B4-032', name: '上海第一百货商店股份', industry: '商业', potential: '中', currentRevenue: 115, potentialRevenue: 440, lastContact: '2026-04-05', outreachType: '辖区经理拜访', outreachTime: '2026-04-05 10:30', leadCount: 4, opportunityCount: 2 },
 ]
+
+function sortB4Customers(customers: typeof b4Customers) {
+  return [...customers].sort((a, b) => {
+    const aReached = a.outreachType !== '未触达' ? 1 : 0
+    const bReached = b.outreachType !== '未触达' ? 1 : 0
+    return bReached - aReached
+  })
+}
 
 // Drill-down data types
 type DrillLevel = 'assoc' | 'partner' | 'visit' | 'task'
@@ -697,37 +707,32 @@ export default function TerritoryDashboard() {
           <ShanghaiMap />
         </div>
         <div className="indicators-col">
-          <div className="assoc-section" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+          <div className="assoc-section territory-overview-section" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             <div className="section-card-top">
-              <span className="section-card-title">两会一园</span>
-              <span className="leads-card-count">共 {filteredAssocs.length} 家</span>
+              <span className="section-card-title">辖区总览</span>
             </div>
-            <div className="filter-bar">
-              <input className="filter-input" placeholder="搜索名称..." value={assocSearch} onChange={e => setAssocSearch(e.target.value)} />
-              <select className="filter-select" value={assocFilter} onChange={e => setAssocFilter(e.target.value)}>
-                <option value="全部">全部状态</option>
-                <option value="已签约">已签约</option>
-                <option value="洽谈中">洽谈中</option>
-                <option value="待开发">待开发</option>
-              </select>
-            </div>
-            <div className="scrollable-list" style={{ flex: 1 }}>
-              {filteredAssocs.map(item => (
-                <div key={item.id} style={{ display: 'flex', flexDirection: 'column', gap: 4, padding: '8px 12px', borderRadius: 'var(--radius)', cursor: 'pointer', transition: 'background 150ms', background: 'transparent', borderBottom: '1px solid var(--border-light)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <span className={`assoc-type ${item.type === '协会' ? 'type-assoc' : item.type === '商会' ? 'type-chamber' : 'type-park'}`}>{item.type}</span>
-                    <span style={{ fontWeight: 500, color: 'var(--accent)', cursor: 'pointer' }} onClick={(e) => { e.stopPropagation(); openAssocDrill(item) }}>{item.name}</span>
-                    <span style={{ fontWeight: 600, color: 'var(--brand-600)', cursor: 'pointer' }} onClick={(e) => { e.stopPropagation(); openAssocDrill(item) }}>{item.memberCount} 家</span>
-                    <span className={`assoc-status ${item.status === '已签约' ? 'as-signed' : item.status === '洽谈中' ? 'as-negotiating' : 'as-pending'}`}>{item.status}</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 11, color: 'var(--text-secondary)' }}>
-                    <span>👤 {item.contact}</span>
-                    <span>📞 {item.contactPhone}</span>
-                    <span>📍 {item.address}</span>
-                    <span>🤝 {item.signedPartner || '——'}</span>
-                  </div>
+            <div className="territory-overview-stats">
+              <div className="overview-stat-item">
+                <div className="overview-stat-label">辖区产能 Revenue</div>
+                <div className="overview-stat-value">¥2,850万</div>
+                <div className="overview-stat-trend up">+12.5% 环比</div>
+              </div>
+              <div className="overview-stat-item">
+                <div className="overview-stat-label">渠道激活数量</div>
+                <div className="overview-stat-value">14 / 20</div>
+                <div className="channel-progress-bar">
+                  <div className="channel-progress-fill" style={{ width: '70%' }} />
                 </div>
-              ))}
+                <div className="channel-progress-labels">
+                  <span>已激活 14</span>
+                  <span>未激活 6</span>
+                </div>
+              </div>
+              <div className="overview-stat-item">
+                <div className="overview-stat-label">B4 客户数量</div>
+                <div className="overview-stat-value">32 家</div>
+                <div className="overview-stat-sub">已触达 20 家 · 未触达 12 家</div>
+              </div>
             </div>
           </div>
         </div>
@@ -736,7 +741,7 @@ export default function TerritoryDashboard() {
       <div className="row-assoc-partner" style={{ gridTemplateColumns: '1fr' }}>
         <div className="partner-section">
           <div className="section-card-top">
-            <span className="section-card-title">联想伙伴</span>
+            <span className="section-card-title">辖区作战</span>
             <span className="leads-card-count">共 {filteredPartners.length} 家</span>
           </div>
           <div className="filter-bar">
@@ -782,60 +787,105 @@ export default function TerritoryDashboard() {
       </div>
 
       <div className="b4-customers-section">
-        <div className="section-card">
+        <div className="section-card b4-management-card">
           <div className="section-card-top">
-            <span className="section-card-title">📋 B4 客户清单</span>
+            <span className="section-card-title">📋 B4 客户经营</span>
             <span className="triple-card-badge">共 {filteredB4Customers.length} 家</span>
           </div>
-          <div className="b4-filter-bar">
-            <select className="b4-filter-select" value={b4IndustryFilter} onChange={e => setB4IndustryFilter(e.target.value)}>
-              <option value="全部">全部行业</option>
-              <option value="制造业">制造业</option>
-              <option value="金融">金融</option>
-              <option value="半导体">半导体</option>
-              <option value="汽车">汽车</option>
-              <option value="互联网">互联网</option>
-              <option value="医药">医药</option>
-              <option value="能源">能源</option>
-              <option value="园区开发">园区开发</option>
-            </select>
-            <select className="b4-filter-select" value={b4PotentialFilter} onChange={e => setB4PotentialFilter(e.target.value)}>
-              <option value="全部">全部潜力</option>
-              <option value="高">高潜力</option>
-              <option value="中">中潜力</option>
-              <option value="低">低潜力</option>
-            </select>
-            <input className="b4-search-input" placeholder="搜索客户名称..." value={b4Search} onChange={e => setB4Search(e.target.value)} />
-          </div>
-          <div className="b4-table-wrapper">
-            <table className="b4-table">
-              <thead>
-                <tr>
-                  <th>客户名称</th>
-                  <th>行业</th>
-                  <th>潜力</th>
-                  <th>当前收入 (万)</th>
-                  <th>潜力收入 (万)</th>
-                  <th>最近联系</th>
-                  <th>状态</th>
-                  <th>下一步行动</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredB4Customers.map(c => (
-                  <tr key={c.id}>
-                    <td><span className="b4-customer-name">{c.name}</span></td>
-                    <td><span className="b4-industry">{c.industry}</span></td>
-                    <td><span className={`b4-potential potential-${c.potential}`}>{c.potential}</span></td>
-                    <td style={{ fontWeight: 600, color: c.currentRevenue > 0 ? 'var(--text-primary)' : 'var(--text-muted)' }}>{c.currentRevenue}</td>
-                    <td style={{ fontWeight: 700, color: 'var(--accent)' }}>{c.potentialRevenue}</td>
-                    <td style={{ fontSize: 11 }}>{c.lastContact}</td>
-                    <td><span className={`b4-status status-${c.status === '跟进中' ? 'following' : c.status === '谈判中' ? 'negotiating' : 'initial'}`}>{c.status}</span></td>
-                    <td style={{ fontSize: 11, color: 'var(--text-secondary)' }}>{c.nextAction}</td>
-                  </tr>
+          <div className="b4-management-content">
+            {/* 左侧子卡片：两会一园 */}
+            <div className="b4-sub-card b4-left-card">
+              <div className="b4-sub-card-title">两会一园</div>
+              <div className="filter-bar">
+                <input className="filter-input" placeholder="搜索名称..." value={assocSearch} onChange={e => setAssocSearch(e.target.value)} />
+                <select className="filter-select" value={assocFilter} onChange={e => setAssocFilter(e.target.value)}>
+                  <option value="全部">全部状态</option>
+                  <option value="已签约">已签约</option>
+                  <option value="洽谈中">洽谈中</option>
+                  <option value="待开发">待开发</option>
+                </select>
+              </div>
+              <div className="scrollable-list b4-left-scroll">
+                {filteredAssocs.map(item => (
+                  <div key={item.id} style={{ display: 'flex', flexDirection: 'column', gap: 4, padding: '8px 12px', borderRadius: 'var(--radius)', cursor: 'pointer', transition: 'background 150ms', background: 'transparent', borderBottom: '1px solid var(--border-light)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <span className={`assoc-type ${item.type === '协会' ? 'type-assoc' : item.type === '商会' ? 'type-chamber' : 'type-park'}`}>{item.type}</span>
+                      <span style={{ fontWeight: 500, color: 'var(--accent)', cursor: 'pointer' }} onClick={(e) => { e.stopPropagation(); openAssocDrill(item) }}>{item.name}</span>
+                      <span style={{ fontWeight: 600, color: 'var(--brand-600)', cursor: 'pointer' }} onClick={(e) => { e.stopPropagation(); openAssocDrill(item) }}>{item.memberCount} 家</span>
+                      <span className={`assoc-status ${item.status === '已签约' ? 'as-signed' : item.status === '洽谈中' ? 'as-negotiating' : 'as-pending'}`}>{item.status}</span>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 11, color: 'var(--text-secondary)' }}>
+                      <span>👤 {item.contact}</span>
+                      <span>📞 {item.contactPhone}</span>
+                      <span>📍 {item.address}</span>
+                      <span>🤝 {item.signedPartner || '——'}</span>
+                    </div>
+                  </div>
                 ))}
-              </tbody>
-            </table>
+              </div>
+            </div>
+            {/* 右侧子卡片：B4客户列表 */}
+            <div className="b4-sub-card b4-right-card">
+              <div className="b4-sub-card-title">客户列表</div>
+              <div className="b4-filter-bar">
+                <select className="b4-filter-select" value={b4IndustryFilter} onChange={e => setB4IndustryFilter(e.target.value)}>
+                  <option value="全部">全部行业</option>
+                  <option value="制造业">制造业</option>
+                  <option value="金融">金融</option>
+                  <option value="半导体">半导体</option>
+                  <option value="汽车">汽车</option>
+                  <option value="互联网">互联网</option>
+                  <option value="医药">医药</option>
+                  <option value="能源">能源</option>
+                  <option value="园区开发">园区开发</option>
+                </select>
+                <select className="b4-filter-select" value={b4PotentialFilter} onChange={e => setB4PotentialFilter(e.target.value)}>
+                  <option value="全部">全部潜力</option>
+                  <option value="高">高潜力</option>
+                  <option value="中">中潜力</option>
+                  <option value="低">低潜力</option>
+                </select>
+                <input className="b4-search-input" placeholder="搜索客户名称..." value={b4Search} onChange={e => setB4Search(e.target.value)} />
+              </div>
+              <div className="b4-table-wrapper b4-right-scroll">
+                <table className="b4-table">
+                  <thead>
+                    <tr>
+                      <th>客户名称</th>
+                      <th>行业</th>
+                      <th>潜力</th>
+                      <th>当前收入(万)</th>
+                      <th>潜力收入(万)</th>
+                      <th>最近联系</th>
+                      <th>触达方式</th>
+                      <th>触达时间</th>
+                      <th>线索数</th>
+                      <th>商机数</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {sortB4Customers(filteredB4Customers).map(c => (
+                      <tr key={c.id} className={c.outreachType !== '未触达' ? 'b4-row-highlight' : ''}>
+                        <td><span className="b4-customer-name">{c.name}</span></td>
+                        <td><span className="b4-industry">{c.industry}</span></td>
+                        <td><span className={`b4-potential potential-${c.potential}`}>{c.potential}</span></td>
+                        <td style={{ fontWeight: 600, color: c.currentRevenue > 0 ? 'var(--text-primary)' : 'var(--text-muted)' }}>{c.currentRevenue}</td>
+                        <td style={{ fontWeight: 700, color: 'var(--accent)' }}>{c.potentialRevenue}</td>
+                        <td style={{ fontSize: 11 }}>{c.lastContact}</td>
+                        <td>
+                          <span className={`b4-outreach-type outreach-${c.outreachType === '嗨掌柜' ? 'hiz' : c.outreachType === '辖区经理拜访' ? 'visit' : 'none'}`}>
+                            {c.outreachType}
+                          </span>
+                        </td>
+                        <td style={{ fontSize: 11, color: c.outreachType === '未触达' ? 'var(--text-muted)' : 'var(--text-secondary)' }}>{c.outreachTime}</td>
+                        <td style={{ fontWeight: 600, color: c.leadCount > 0 ? 'var(--accent)' : 'var(--text-muted)' }}>{c.leadCount}</td>
+                        <td style={{ fontWeight: 600, color: c.opportunityCount > 0 ? 'var(--success)' : 'var(--text-muted)' }}>{c.opportunityCount}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </div>
