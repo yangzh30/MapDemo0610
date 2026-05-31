@@ -748,7 +748,7 @@ export default function TerritoryDashboard() {
           </div>
           <div className="partner-table-wrapper">
             <table className="partner-table">
-              <thead><tr><th>渠道城市</th><th>渠道编码</th><th>渠道名称</th><th>签约级别</th><th>当前财季承诺量</th><th>当季度销量</th><th>上季度销量</th><th>近一年销量</th><th>渠道省份</th><th>战区名称</th><th>辖区</th><th>签约类型</th><th>是否激活</th><th>触达方式</th></tr></thead>
+              <thead><tr><th>渠道城市</th><th>渠道编码</th><th>渠道名称</th><th>签约级别</th><th>当前财季承诺量</th><th>当季度销量</th><th>上季度销量</th><th>近一年销量</th><th>渠道省份</th><th>战区名称</th><th>签约类型</th><th>是否激活</th><th>触达方式</th></tr></thead>
               <tbody>
                 {filteredPartners.map(p => (
                   <tr key={p.id}>
@@ -762,7 +762,6 @@ export default function TerritoryDashboard() {
                     <td>{p.yearlySales}</td>
                     <td>{p.province}</td>
                     <td>{p.warZone}</td>
-                    <td>{p.district}</td>
                     <td><span className="partner-sign-type">{p.signType}</span></td>
                     <td><span className={`partner-active ${p.isActive ? 'active-yes' : 'active-no'}`}>{p.isActive ? '是' : '否'}</span></td>
                     <td><span className={`partner-outreach ${p.outreach ? 'outreach-' + p.outreach.toLowerCase() : 'outreach-empty'}`}>{p.outreach || '——'}</span></td>
