@@ -34,14 +34,6 @@ export default function MainLayout() {
             <span className="nav-item-icon territory">T</span>
             <span>辖区经理</span>
           </button>
-          <button className={`nav-item ${location.pathname === '/warzone' ? 'active' : ''}`} onClick={() => navigate('/warzone')}>
-            <span className="nav-item-icon warzone">W</span>
-            <span>战区总经理</span>
-          </button>
-          <button className={`nav-item ${location.pathname === '/hq' ? 'active' : ''}`} onClick={() => navigate('/hq')}>
-            <span className="nav-item-icon hq">H</span>
-            <span>总部管理者</span>
-          </button>
         </nav>
 
         <div className="sidebar-footer">

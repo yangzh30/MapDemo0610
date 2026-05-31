@@ -214,81 +214,71 @@ function getAssocWithCompanies(assocId: string) {
 }
 
 const partnerMarkerData: {
-  id: string; name: string; level: string; value: [number, number];
-  status: string; monthlySTI: number; lockRate: number; attachRate: number;
-  visitStatus: string; lastVisit: string;
+  id: string; channelCode: string; name: string; city: string;
+  level: string; quarterlyCommit: number; quarterlySales: number; lastQuarterSales: number;
+  yearlySales: number; province: string; warZone: string; district: string;
+  signType: string; isActive: boolean; outreach: string;
 }[] = [
-  { id: 'CH-001', name: '神州数码', level: '钻石', value: [121.435, 31.285], status: '活跃', monthlySTI: 650, lockRate: 82, attachRate: 58, visitStatus: '已拜访', lastVisit: '2026-05-04' },
-  { id: 'CH-002', name: '联强国际', level: '钻石', value: [121.465, 31.215], status: '活跃', monthlySTI: 580, lockRate: 80, attachRate: 55, visitStatus: '已拜访', lastVisit: '2026-05-02' },
-  { id: 'CH-003', name: '上海金陵网络', level: '金牌', value: [121.505, 31.265], status: '活跃', monthlySTI: 350, lockRate: 72, attachRate: 45, visitStatus: '本月已访', lastVisit: '2026-04-28' },
-  { id: 'CH-004', name: '伟仕佳杰', level: '金牌', value: [121.545, 31.185], status: '活跃', monthlySTI: 420, lockRate: 75, attachRate: 48, visitStatus: '已拜访', lastVisit: '2026-05-05' },
-  { id: 'CH-005', name: '上海康硕信息', level: '银牌', value: [121.575, 31.235], status: '活跃', monthlySTI: 180, lockRate: 62, attachRate: 35, visitStatus: '本月已访', lastVisit: '2026-04-30' },
-  { id: 'CH-006', name: '上海翎云科技', level: '银牌', value: [121.485, 31.155], status: '一般', monthlySTI: 155, lockRate: 58, attachRate: 30, visitStatus: '超过1月', lastVisit: '2026-03-20' },
-  { id: 'CH-007', name: '上海贝加信息', level: '铜牌', value: [121.615, 31.195], status: '一般', monthlySTI: 95, lockRate: 50, attachRate: 28, visitStatus: '超过1月', lastVisit: '2026-03-15' },
-  { id: 'CH-008', name: '英迈中国', level: '铜牌', value: [121.525, 31.295], status: '一般', monthlySTI: 72, lockRate: 42, attachRate: 18, visitStatus: '超过1月', lastVisit: '2026-02-28' },
-  { id: 'CH-009', name: '上海赢家信息', level: '注册', value: [121.405, 31.225], status: '沉默', monthlySTI: 48, lockRate: 35, attachRate: 12, visitStatus: '无', lastVisit: '—' },
-  { id: 'CH-010', name: '上海华信科技', level: '注册', value: [121.635, 31.245], status: '沉默', monthlySTI: 35, lockRate: 30, attachRate: 10, visitStatus: '无', lastVisit: '—' },
-  { id: 'CH-011', name: '上海东讯科技', level: '金牌', value: [121.445, 31.175], status: '活跃', monthlySTI: 380, lockRate: 74, attachRate: 42, visitStatus: '已拜访', lastVisit: '2026-05-03' },
-  { id: 'CH-012', name: '上海辰晔信息', level: '金牌', value: [121.565, 31.275], status: '活跃', monthlySTI: 290, lockRate: 68, attachRate: 38, visitStatus: '已拜访', lastVisit: '2026-05-04' },
-  { id: 'CH-013', name: '上海致柏商贸', level: '银牌', value: [121.495, 31.205], status: '活跃', monthlySTI: 165, lockRate: 60, attachRate: 32, visitStatus: '本月已访', lastVisit: '2026-04-25' },
-  { id: 'CH-014', name: '上海恒盈科技', level: '银牌', value: [121.585, 31.165], status: '一般', monthlySTI: 140, lockRate: 55, attachRate: 28, visitStatus: '超过1月', lastVisit: '2026-03-10' },
-  { id: 'CH-015', name: '上海智远科技', level: '铜牌', value: [121.515, 31.255], status: '一般', monthlySTI: 88, lockRate: 48, attachRate: 25, visitStatus: '超过1月', lastVisit: '2026-03-05' },
-  { id: 'CH-016', name: '上海联创世纪', level: '铜牌', value: [121.455, 31.195], status: '一般', monthlySTI: 65, lockRate: 40, attachRate: 20, visitStatus: '无', lastVisit: '—' },
-  { id: 'CH-017', name: '上海博睿信息', level: '注册', value: [121.595, 31.215], status: '沉默', monthlySTI: 42, lockRate: 32, attachRate: 10, visitStatus: '无', lastVisit: '—' },
-  { id: 'CH-018', name: '上海云图科技', level: '注册', value: [121.475, 31.275], status: '沉默', monthlySTI: 38, lockRate: 28, attachRate: 8, visitStatus: '无', lastVisit: '—' },
-  { id: 'CH-019', name: '上海华勤信息', level: '银牌', value: [121.555, 31.225], status: '活跃', monthlySTI: 175, lockRate: 64, attachRate: 36, visitStatus: '已拜访', lastVisit: '2026-05-01' },
-  { id: 'CH-020', name: '上海盛美电子', level: '铜牌', value: [121.425, 31.235], status: '一般', monthlySTI: 78, lockRate: 46, attachRate: 22, visitStatus: '超过1月', lastVisit: '2026-03-18' },
+  { id: 'CH-001', channelCode: 'K10086001', name: '神州数码', city: '上海', level: '钻石', quarterlyCommit: 800, quarterlySales: 650, lastQuarterSales: 580, yearlySales: 2450, province: '上海', warZone: '华东战区', district: '浦东辖区', signType: '增值经销商', isActive: true, outreach: 'OS' },
+  { id: 'CH-002', channelCode: 'K10086002', name: '联强国际', city: '上海', level: '钻石', quarterlyCommit: 700, quarterlySales: 580, lastQuarterSales: 520, yearlySales: 2100, province: '上海', warZone: '华东战区', district: '徐汇辖区', signType: '增值经销商', isActive: true, outreach: 'IS' },
+  { id: 'CH-003', channelCode: 'K10086003', name: '上海金陵网络', city: '上海', level: '金牌', quarterlyCommit: 400, quarterlySales: 350, lastQuarterSales: 300, yearlySales: 1280, province: '上海', warZone: '华东战区', district: '杨浦辖区', signType: '增值代理商', isActive: true, outreach: 'BPP' },
+  { id: 'CH-004', channelCode: 'K10086004', name: '伟仕佳杰', city: '上海', level: '金牌', quarterlyCommit: 500, quarterlySales: 420, lastQuarterSales: 380, yearlySales: 1520, province: '上海', warZone: '华东战区', district: '静安辖区', signType: '增值经销商', isActive: true, outreach: 'OS' },
+  { id: 'CH-005', channelCode: 'K10086005', name: '上海康硕信息', city: '上海', level: '银牌', quarterlyCommit: 220, quarterlySales: 180, lastQuarterSales: 150, yearlySales: 620, province: '上海', warZone: '华东战区', district: '闵行辖区', signType: '增值代理商', isActive: true, outreach: 'IS' },
+  { id: 'CH-006', channelCode: 'K10086006', name: '上海翎云科技', city: '上海', level: '银牌', quarterlyCommit: 180, quarterlySales: 155, lastQuarterSales: 120, yearlySales: 520, province: '上海', warZone: '华东战区', district: '长宁辖区', signType: '注册伙伴', isActive: true, outreach: '' },
+  { id: 'CH-007', channelCode: 'K10086007', name: '上海贝加信息', city: '上海', level: '银牌', quarterlyCommit: 120, quarterlySales: 95, lastQuarterSales: 80, yearlySales: 340, province: '上海', warZone: '华东战区', district: '普陀辖区', signType: '注册伙伴', isActive: true, outreach: '' },
+  { id: 'CH-008', channelCode: 'K10086008', name: '英迈中国', city: '上海', level: '银牌', quarterlyCommit: 90, quarterlySales: 72, lastQuarterSales: 65, yearlySales: 260, province: '上海', warZone: '华东战区', district: '虹口辖区', signType: '开放伙伴', isActive: true, outreach: 'BPP' },
+  { id: 'CH-009', channelCode: 'K10086009', name: '上海赢家信息', city: '上海', level: '铜牌', quarterlyCommit: 60, quarterlySales: 48, lastQuarterSales: 42, yearlySales: 165, province: '上海', warZone: '华东战区', district: '宝山辖区', signType: '注册伙伴', isActive: true, outreach: '' },
+  { id: 'CH-010', channelCode: 'K10086010', name: '上海华信科技', city: '上海', level: '铜牌', quarterlyCommit: 45, quarterlySales: 35, lastQuarterSales: 30, yearlySales: 120, province: '上海', warZone: '华东战区', district: '松江辖区', signType: '注册伙伴', isActive: true, outreach: '' },
+  { id: 'CH-011', channelCode: 'K10086011', name: '上海东讯科技', city: '上海', level: '金牌', quarterlyCommit: 450, quarterlySales: 380, lastQuarterSales: 340, yearlySales: 1380, province: '上海', warZone: '华东战区', district: '浦东辖区', signType: '增值代理商', isActive: true, outreach: 'OS' },
+  { id: 'CH-012', channelCode: 'K10086012', name: '上海辰晔信息', city: '上海', level: '金牌', quarterlyCommit: 350, quarterlySales: 290, lastQuarterSales: 260, yearlySales: 1050, province: '上海', warZone: '华东战区', district: '徐汇辖区', signType: '增值经销商', isActive: true, outreach: 'IS' },
+  { id: 'CH-013', channelCode: 'K10086013', name: '上海致柏商贸', city: '上海', level: '银牌', quarterlyCommit: 200, quarterlySales: 165, lastQuarterSales: 140, yearlySales: 560, province: '上海', warZone: '华东战区', district: '杨浦辖区', signType: '增值代理商', isActive: true, outreach: 'BPP' },
+  { id: 'CH-014', channelCode: 'K10086014', name: '上海恒盈科技', city: '上海', level: '银牌', quarterlyCommit: 170, quarterlySales: 140, lastQuarterSales: 120, yearlySales: 480, province: '上海', warZone: '华东战区', district: '静安辖区', signType: '注册伙伴', isActive: true, outreach: '' },
+  { id: 'CH-015', channelCode: 'K10086015', name: '上海智远科技', city: '上海', level: '铜牌', quarterlyCommit: 110, quarterlySales: 88, lastQuarterSales: 75, yearlySales: 300, province: '上海', warZone: '华东战区', district: '闵行辖区', signType: '注册伙伴', isActive: true, outreach: '' },
+  { id: 'CH-016', channelCode: 'K10086016', name: '上海联创世纪', city: '上海', level: '铜牌', quarterlyCommit: 80, quarterlySales: 65, lastQuarterSales: 55, yearlySales: 220, province: '上海', warZone: '华东战区', district: '长宁辖区', signType: '开放伙伴', isActive: true, outreach: '' },
+  { id: 'CH-017', channelCode: 'K10086017', name: '上海博睿信息', city: '上海', level: '铜牌', quarterlyCommit: 55, quarterlySales: 42, lastQuarterSales: 38, yearlySales: 145, province: '上海', warZone: '华东战区', district: '普陀辖区', signType: '注册伙伴', isActive: true, outreach: '' },
+  { id: 'CH-018', channelCode: 'K10086018', name: '上海云图科技', city: '上海', level: '铜牌', quarterlyCommit: 50, quarterlySales: 38, lastQuarterSales: 32, yearlySales: 130, province: '上海', warZone: '华东战区', district: '虹口辖区', signType: '注册伙伴', isActive: true, outreach: '' },
+  { id: 'CH-019', channelCode: 'K10086019', name: '上海华勤信息', city: '上海', level: '银牌', quarterlyCommit: 210, quarterlySales: 175, lastQuarterSales: 155, yearlySales: 600, province: '上海', warZone: '华东战区', district: '宝山辖区', signType: '增值代理商', isActive: true, outreach: 'OS' },
+  { id: 'CH-020', channelCode: 'K10086020', name: '上海盛美电子', city: '上海', level: '铜牌', quarterlyCommit: 95, quarterlySales: 78, lastQuarterSales: 68, yearlySales: 265, province: '上海', warZone: '华东战区', district: '松江辖区', signType: '注册伙伴', isActive: true, outreach: '' },
 ]
 
 // B4 客户经营数据
-type OutreachType = '嗨掌柜' | '辖区经理拜访' | '未触达'
-
 const b4Customers: {
-  id: string; name: string; industry: string; potential: string;
-  currentRevenue: number; potentialRevenue: number; lastContact: string;
-  outreachType: OutreachType; outreachTime: string; leadCount: number; opportunityCount: number;
+  id: string; warZone: string; name: string; cdbid: string; city: string;
+  industryCategory: string; registeredCapital: string; foundedDate: string;
 }[] = [
-  { id: 'B4-001', name: '上海华信科技有限公司', industry: '制造业', potential: '高', currentRevenue: 120, potentialRevenue: 500, lastContact: '2026-05-06', outreachType: '嗨掌柜', outreachTime: '2026-05-06 09:30', leadCount: 5, opportunityCount: 2 },
-  { id: 'B4-002', name: '上海浦东发展银行股份有限公司', industry: '金融', potential: '高', currentRevenue: 0, potentialRevenue: 800, lastContact: '2026-05-05', outreachType: '辖区经理拜访', outreachTime: '2026-05-05 14:00', leadCount: 8, opportunityCount: 3 },
-  { id: 'B4-003', name: '上海微电子装备有限公司', industry: '半导体', potential: '高', currentRevenue: 200, potentialRevenue: 600, lastContact: '2026-05-04', outreachType: '嗨掌柜', outreachTime: '2026-05-04 10:30', leadCount: 6, opportunityCount: 2 },
-  { id: 'B4-004', name: '中芯国际集成电路制造', industry: '半导体', potential: '高', currentRevenue: 350, potentialRevenue: 1200, lastContact: '2026-05-03', outreachType: '辖区经理拜访', outreachTime: '2026-05-03 16:00', leadCount: 12, opportunityCount: 5 },
-  { id: 'B4-005', name: '上海汽车集团股份有限公司', industry: '汽车', potential: '高', currentRevenue: 180, potentialRevenue: 900, lastContact: '2026-05-02', outreachType: '嗨掌柜', outreachTime: '2026-05-02 11:00', leadCount: 7, opportunityCount: 3 },
-  { id: 'B4-006', name: '交通银行股份有限公司', industry: '金融', potential: '高', currentRevenue: 0, potentialRevenue: 750, lastContact: '2026-05-01', outreachType: '未触达', outreachTime: '——', leadCount: 0, opportunityCount: 0 },
-  { id: 'B4-007', name: '上海电气集团股份有限公司', industry: '装备制造', potential: '高', currentRevenue: 280, potentialRevenue: 850, lastContact: '2026-04-30', outreachType: '辖区经理拜访', outreachTime: '2026-04-30 09:00', leadCount: 9, opportunityCount: 4 },
-  { id: 'B4-008', name: '拼多多网络科技有限公司', industry: '互联网', potential: '高', currentRevenue: 150, potentialRevenue: 650, lastContact: '2026-04-29', outreachType: '嗨掌柜', outreachTime: '2026-04-29 15:30', leadCount: 4, opportunityCount: 2 },
-  { id: 'B4-009', name: '上海医药集团股份有限公司', industry: '医药', potential: '高', currentRevenue: 220, potentialRevenue: 700, lastContact: '2026-04-28', outreachType: '辖区经理拜访', outreachTime: '2026-04-28 13:30', leadCount: 6, opportunityCount: 3 },
-  { id: 'B4-010', name: '携程计算机技术有限公司', industry: '互联网', potential: '高', currentRevenue: 190, potentialRevenue: 580, lastContact: '2026-04-27', outreachType: '嗨掌柜', outreachTime: '2026-04-27 10:00', leadCount: 5, opportunityCount: 2 },
-  { id: 'B4-011', name: '上海宝钢股份有限公司', industry: '钢铁', potential: '中', currentRevenue: 320, potentialRevenue: 680, lastContact: '2026-04-26', outreachType: '未触达', outreachTime: '——', leadCount: 0, opportunityCount: 0 },
-  { id: 'B4-012', name: '东方财富证券股份有限公司', industry: '金融', potential: '高', currentRevenue: 0, potentialRevenue: 520, lastContact: '2026-04-25', outreachType: '未触达', outreachTime: '——', leadCount: 0, opportunityCount: 0 },
-  { id: 'B4-013', name: '上海机场集团股份有限公司', industry: '交通', potential: '中', currentRevenue: 260, potentialRevenue: 620, lastContact: '2026-04-24', outreachType: '辖区经理拜访', outreachTime: '2026-04-24 11:30', leadCount: 4, opportunityCount: 1 },
-  { id: 'B4-014', name: '上海复星医药有限公司', industry: '医药', potential: '高', currentRevenue: 175, potentialRevenue: 590, lastContact: '2026-04-23', outreachType: '嗨掌柜', outreachTime: '2026-04-23 16:30', leadCount: 5, opportunityCount: 2 },
-  { id: 'B4-015', name: '上海建工集团股份有限公司', industry: '建筑', potential: '中', currentRevenue: 240, potentialRevenue: 560, lastContact: '2026-04-22', outreachType: '未触达', outreachTime: '——', leadCount: 0, opportunityCount: 0 },
-  { id: 'B4-016', name: '圆通速递股份有限公司', industry: '物流', potential: '中', currentRevenue: 130, potentialRevenue: 480, lastContact: '2026-04-21', outreachType: '辖区经理拜访', outreachTime: '2026-04-21 09:30', leadCount: 3, opportunityCount: 1 },
-  { id: 'B4-017', name: '上海光明食品集团', industry: '食品', potential: '中', currentRevenue: 95, potentialRevenue: 420, lastContact: '2026-04-20', outreachType: '未触达', outreachTime: '——', leadCount: 0, opportunityCount: 0 },
-  { id: 'B4-018', name: '上海家化联合股份有限公司', industry: '日化', potential: '中', currentRevenue: 110, potentialRevenue: 450, lastContact: '2026-04-19', outreachType: '嗨掌柜', outreachTime: '2026-04-19 14:00', leadCount: 3, opportunityCount: 1 },
-  { id: 'B4-019', name: '申能股份有限公司', industry: '能源', potential: '高', currentRevenue: 290, potentialRevenue: 820, lastContact: '2026-04-18', outreachType: '辖区经理拜访', outreachTime: '2026-04-18 10:30', leadCount: 7, opportunityCount: 3 },
-  { id: 'B4-020', name: '上海临港经济发展集团', industry: '园区开发', potential: '高', currentRevenue: 0, potentialRevenue: 950, lastContact: '2026-04-17', outreachType: '未触达', outreachTime: '——', leadCount: 0, opportunityCount: 0 },
-  { id: 'B4-021', name: '上海张江高科技园区开发', industry: '园区开发', potential: '高', currentRevenue: 160, potentialRevenue: 720, lastContact: '2026-04-16', outreachType: '嗨掌柜', outreachTime: '2026-04-16 15:00', leadCount: 8, opportunityCount: 3 },
-  { id: 'B4-022', name: '上海外高桥保税区开发', industry: '园区开发', potential: '中', currentRevenue: 185, potentialRevenue: 540, lastContact: '2026-04-15', outreachType: '辖区经理拜访', outreachTime: '2026-04-15 11:00', leadCount: 4, opportunityCount: 2 },
-  { id: 'B4-023', name: '上海隧道工程股份有限公司', industry: '建筑', potential: '中', currentRevenue: 210, potentialRevenue: 510, lastContact: '2026-04-14', outreachType: '未触达', outreachTime: '——', leadCount: 0, opportunityCount: 0 },
-  { id: 'B4-024', name: '上海华谊集团股份有限公司', industry: '化工', potential: '中', currentRevenue: 145, potentialRevenue: 470, lastContact: '2026-04-13', outreachType: '未触达', outreachTime: '——', leadCount: 0, opportunityCount: 0 },
-  { id: 'B4-025', name: '上海锦江国际酒店发展', industry: '酒店', potential: '中', currentRevenue: 125, potentialRevenue: 490, lastContact: '2026-04-12', outreachType: '嗨掌柜', outreachTime: '2026-04-12 09:00', leadCount: 2, opportunityCount: 1 },
-  { id: 'B4-026', name: '上海豫园旅游商城股份', industry: '商业', potential: '中', currentRevenue: 105, potentialRevenue: 430, lastContact: '2026-04-11', outreachType: '辖区经理拜访', outreachTime: '2026-04-11 13:30', leadCount: 3, opportunityCount: 1 },
-  { id: 'B4-027', name: '上海兰生股份有限公司', industry: '贸易', potential: '中', currentRevenue: 88, potentialRevenue: 380, lastContact: '2026-04-10', outreachType: '未触达', outreachTime: '——', leadCount: 0, opportunityCount: 0 },
-  { id: 'B4-028', name: '上海开开实业股份有限公司', industry: '纺织', potential: '低', currentRevenue: 65, potentialRevenue: 320, lastContact: '2026-04-09', outreachType: '未触达', outreachTime: '——', leadCount: 0, opportunityCount: 0 },
-  { id: 'B4-029', name: '上海三枪集团股份有限公司', industry: '纺织', potential: '低', currentRevenue: 72, potentialRevenue: 340, lastContact: '2026-04-08', outreachType: '未触达', outreachTime: '——', leadCount: 0, opportunityCount: 0 },
-  { id: 'B4-030', name: '上海龙头集团股份有限公司', industry: '纺织', potential: '低', currentRevenue: 58, potentialRevenue: 290, lastContact: '2026-04-07', outreachType: '未触达', outreachTime: '——', leadCount: 0, opportunityCount: 0 },
-  { id: 'B4-031', name: '上海友谊集团股份有限公司', industry: '商业', potential: '中', currentRevenue: 98, potentialRevenue: 410, lastContact: '2026-04-06', outreachType: '嗨掌柜', outreachTime: '2026-04-06 16:00', leadCount: 3, opportunityCount: 1 },
-  { id: 'B4-032', name: '上海第一百货商店股份', industry: '商业', potential: '中', currentRevenue: 115, potentialRevenue: 440, lastContact: '2026-04-05', outreachType: '辖区经理拜访', outreachTime: '2026-04-05 10:30', leadCount: 4, opportunityCount: 2 },
+  { id: 'B4-001', warZone: '华东战区', name: '上海华信科技有限公司', cdbid: '91310000123456789A', city: '上海', industryCategory: '制造业', registeredCapital: '5000万', foundedDate: '2001-03-15' },
+  { id: 'B4-002', warZone: '华东战区', name: '上海浦东发展银行股份有限公司', cdbid: '9131000013221158XC', city: '上海', industryCategory: '金融业', registeredCapital: '293.52亿', foundedDate: '1992-10-19' },
+  { id: 'B4-003', warZone: '华东战区', name: '上海微电子装备有限公司', cdbid: '91310115703056789B', city: '上海', industryCategory: '制造业', registeredCapital: '2.5亿', foundedDate: '2002-03-07' },
+  { id: 'B4-004', warZone: '华东战区', name: '中芯国际集成电路制造', cdbid: '91310000710912345C', city: '上海', industryCategory: '制造业', registeredCapital: '78.9亿', foundedDate: '2000-12-21' },
+  { id: 'B4-005', warZone: '华东战区', name: '上海汽车集团股份有限公司', cdbid: '91310000132200010D', city: '上海', industryCategory: '制造业', registeredCapital: '116.83亿', foundedDate: '1984-04-16' },
+  { id: 'B4-006', warZone: '华东战区', name: '交通银行股份有限公司', cdbid: '91310000100012345E', city: '上海', industryCategory: '金融业', registeredCapital: '742.63亿', foundedDate: '1987-03-30' },
+  { id: 'B4-007', warZone: '华东战区', name: '上海电气集团股份有限公司', cdbid: '91310000132229867F', city: '上海', industryCategory: '制造业', registeredCapital: '155.8亿', foundedDate: '2004-03-01' },
+  { id: 'B4-008', warZone: '华东战区', name: '拼多多网络科技有限公司', cdbid: '91310000329645678G', city: '上海', industryCategory: '信息传输、软件和信息技术服务业', registeredCapital: '1000万', foundedDate: '2014-09-23' },
+  { id: 'B4-009', warZone: '华东战区', name: '上海医药集团股份有限公司', cdbid: '91310000132256789H', city: '上海', industryCategory: '批发和零售业', registeredCapital: '37.05亿', foundedDate: '1994-01-18' },
+  { id: 'B4-010', warZone: '华东战区', name: '携程计算机技术有限公司', cdbid: '91310115703098765I', city: '上海', industryCategory: '信息传输、软件和信息技术服务业', registeredCapital: '500万', foundedDate: '2000-07-18' },
+  { id: 'B4-011', warZone: '华东战区', name: '上海宝钢股份有限公司', cdbid: '91310000132234567J', city: '上海', industryCategory: '制造业', registeredCapital: '220亿', foundedDate: '2000-02-03' },
+  { id: 'B4-012', warZone: '华东战区', name: '东方财富证券股份有限公司', cdbid: '91310000703087654K', city: '上海', industryCategory: '金融业', registeredCapital: '158.5亿', foundedDate: '2005-01-20' },
+  { id: 'B4-013', warZone: '华东战区', name: '上海机场集团股份有限公司', cdbid: '91310000132278901L', city: '上海', industryCategory: '交通运输、仓储和邮政业', registeredCapital: '19.35亿', foundedDate: '1998-02-11' },
+  { id: 'B4-014', warZone: '华东战区', name: '上海复星医药有限公司', cdbid: '91310000132234568M', city: '上海', industryCategory: '制造业', registeredCapital: '26.72亿', foundedDate: '1995-05-31' },
+  { id: 'B4-015', warZone: '华东战区', name: '上海建工集团股份有限公司', cdbid: '91310000132290123N', city: '上海', industryCategory: '建筑业', registeredCapital: '88.9亿', foundedDate: '1998-06-15' },
+  { id: 'B4-016', warZone: '华东战区', name: '圆通速递股份有限公司', cdbid: '91310000132245678O', city: '上海', industryCategory: '交通运输、仓储和邮政业', registeredCapital: '34.42亿', foundedDate: '2000-04-14' },
+  { id: 'B4-017', warZone: '华东战区', name: '上海光明食品集团', cdbid: '91310000132256789P', city: '上海', industryCategory: '制造业', registeredCapital: '49.6亿', foundedDate: '2006-08-08' },
+  { id: 'B4-018', warZone: '华东战区', name: '上海家化联合股份有限公司', cdbid: '91310000132267890Q', city: '上海', industryCategory: '制造业', registeredCapital: '6.77亿', foundedDate: '1995-12-01' },
+  { id: 'B4-019', warZone: '华东战区', name: '申能股份有限公司', cdbid: '91310000132278901R', city: '上海', industryCategory: '电力、热力、燃气及水生产和供应业', registeredCapital: '49.12亿', foundedDate: '1993-02-22' },
+  { id: 'B4-020', warZone: '华东战区', name: '上海临港经济发展集团', cdbid: '91310000132289012S', city: '上海', industryCategory: '房地产业', registeredCapital: '75亿', foundedDate: '2003-09-10' },
+  { id: 'B4-021', warZone: '华东战区', name: '上海张江高科技园区开发', cdbid: '91310000132290123T', city: '上海', industryCategory: '房地产业', registeredCapital: '15.5亿', foundedDate: '1996-04-18' },
+  { id: 'B4-022', warZone: '华东战区', name: '上海外高桥保税区开发', cdbid: '91310000132201234U', city: '上海', industryCategory: '房地产业', registeredCapital: '11.36亿', foundedDate: '1992-12-10' },
+  { id: 'B4-023', warZone: '华东战区', name: '上海隧道工程股份有限公司', cdbid: '91310000132212345V', city: '上海', industryCategory: '建筑业', registeredCapital: '31.44亿', foundedDate: '1993-08-09' },
+  { id: 'B4-024', warZone: '华东战区', name: '上海华谊集团股份有限公司', cdbid: '91310000132223456W', city: '上海', industryCategory: '制造业', registeredCapital: '21.17亿', foundedDate: '1992-05-05' },
+  { id: 'B4-025', warZone: '华东战区', name: '上海锦江国际酒店发展', cdbid: '91310000132234567X', city: '上海', industryCategory: '住宿和餐饮业', registeredCapital: '9.83亿', foundedDate: '1994-12-13' },
+  { id: 'B4-026', warZone: '华东战区', name: '上海豫园旅游商城股份', cdbid: '91310000132245678Y', city: '上海', industryCategory: '批发和零售业', registeredCapital: '38.85亿', foundedDate: '1987-11-25' },
+  { id: 'B4-027', warZone: '华东战区', name: '上海兰生股份有限公司', cdbid: '91310000132256789Z', city: '上海', industryCategory: '批发和零售业', registeredCapital: '4.2亿', foundedDate: '1993-10-07' },
+  { id: 'B4-028', warZone: '华东战区', name: '上海开开实业股份有限公司', cdbid: '91310000132267890A', city: '上海', industryCategory: '制造业', registeredCapital: '2.43亿', foundedDate: '1992-12-28' },
+  { id: 'B4-029', warZone: '华东战区', name: '上海三枪集团股份有限公司', cdbid: '91310000132278901B', city: '上海', industryCategory: '制造业', registeredCapital: '3.5亿', foundedDate: '1994-06-28' },
+  { id: 'B4-030', warZone: '华东战区', name: '上海龙头集团股份有限公司', cdbid: '91310000132289012C', city: '上海', industryCategory: '制造业', registeredCapital: '4.26亿', foundedDate: '1991-11-18' },
+  { id: 'B4-031', warZone: '华东战区', name: '上海友谊集团股份有限公司', cdbid: '91310000132290123D', city: '上海', industryCategory: '批发和零售业', registeredCapital: '17.2亿', foundedDate: '1993-12-21' },
+  { id: 'B4-032', warZone: '华东战区', name: '上海第一百货商店股份', cdbid: '91310000132201234E', city: '上海', industryCategory: '批发和零售业', registeredCapital: '5.31亿', foundedDate: '1992-06-01' },
 ]
-
-function sortB4Customers(customers: typeof b4Customers) {
-  return [...customers].sort((a, b) => {
-    const aReached = a.outreachType !== '未触达' ? 1 : 0
-    const bReached = b.outreachType !== '未触达' ? 1 : 0
-    return bReached - aReached
-  })
-}
 
 // Drill-down data types
 type DrillLevel = 'assoc' | 'partner' | 'visit' | 'task'
@@ -374,7 +364,13 @@ function ShanghaiMap() {
       const isAssoc = mode === 'assoc'
       const seriesData = isAssoc
         ? assocMarkerData.map(m => ({ name: m.name, value: m.value, _raw: m, itemStyle: { color: markerColor(m.status) } }))
-        : partnerMarkerData.map(m => ({ name: m.name, value: m.value, _raw: m, itemStyle: { color: partnerMarkerColor(m.level) } }))
+        : partnerMarkerData.map((m, i) => {
+            const angle = (i / partnerMarkerData.length) * Math.PI * 2
+            const radius = 0.08 + (i % 3) * 0.04
+            const lng = 121.47 + Math.cos(angle) * radius
+            const lat = 31.22 + Math.sin(angle) * radius * 0.7
+            return { name: m.name, value: [lng, lat], _raw: m, itemStyle: { color: partnerMarkerColor(m.level) } }
+          })
 
       const option: echarts.EChartsOption = {
         tooltip: {
@@ -556,30 +552,6 @@ function levelClass(level: string) {
   }
 }
 
-// Partner to district manager mapping
-const partnerDistrictMap: Record<string, { district: string; manager: string }> = {
-  'CH-001': { district: '浦东辖区', manager: '张经理' },
-  'CH-002': { district: '徐汇辖区', manager: '王经理' },
-  'CH-003': { district: '杨浦辖区', manager: '陈经理' },
-  'CH-004': { district: '静安辖区', manager: '赵经理' },
-  'CH-005': { district: '闵行辖区', manager: '刘经理' },
-  'CH-006': { district: '长宁辖区', manager: '孙经理' },
-  'CH-007': { district: '普陀辖区', manager: '周经理' },
-  'CH-008': { district: '虹口辖区', manager: '吴经理' },
-  'CH-009': { district: '宝山辖区', manager: '郑经理' },
-  'CH-010': { district: '松江辖区', manager: '钱经理' },
-  'CH-011': { district: '浦东辖区', manager: '张经理' },
-  'CH-012': { district: '徐汇辖区', manager: '王经理' },
-  'CH-013': { district: '杨浦辖区', manager: '陈经理' },
-  'CH-014': { district: '静安辖区', manager: '赵经理' },
-  'CH-015': { district: '闵行辖区', manager: '刘经理' },
-  'CH-016': { district: '长宁辖区', manager: '孙经理' },
-  'CH-017': { district: '普陀辖区', manager: '周经理' },
-  'CH-018': { district: '虹口辖区', manager: '吴经理' },
-  'CH-019': { district: '宝山辖区', manager: '郑经理' },
-  'CH-020': { district: '松江辖区', manager: '钱经理' },
-}
-
 export default function TerritoryDashboard() {
   const [recordModal, setRecordModal] = useState<VisitItem | null>(null)
   const [visitNotes, setVisitNotes] = useState('')
@@ -587,14 +559,15 @@ export default function TerritoryDashboard() {
   const [visitResult, setVisitResult] = useState<{ summary: string; nextPlan: string } | null>(null)
   const [visits, setVisits] = useState(_mockVisitsData)
   const [tasks, setTasks] = useState(_mockTasksData)
-  const [partnerData] = useState(_partnerData)
+  const [partnerData] = useState(partnerMarkerData)
   const [assocFilter, setAssocFilter] = useState<string>('全部')
   const [assocSearch, setAssocSearch] = useState('')
-  const [partnerFilter, setPartnerFilter] = useState<string>('全部')
+  const [partnerPeriodFilter, setPartnerPeriodFilter] = useState<string>('全部')
+  const [partnerOutreachFilter, setPartnerOutreachFilter] = useState<string>('全部')
   const [partnerSearch, setPartnerSearch] = useState('')
   const [b4IndustryFilter, setB4IndustryFilter] = useState('全部')
-  const [b4PotentialFilter, setB4PotentialFilter] = useState('全部')
   const [b4Search, setB4Search] = useState('')
+  const [b4CdbidSearch, setB4CdbidSearch] = useState('')
 
   // Drill-down modal state
   const [drill, setDrill] = useState<DrillState>({ open: false, level: 'assoc', title: '', data: null })
@@ -645,10 +618,10 @@ export default function TerritoryDashboard() {
   }
 
   const filteredB4Customers = b4Customers.filter(c => {
-    const industryMatch = b4IndustryFilter === '全部' || c.industry === b4IndustryFilter
-    const potentialMatch = b4PotentialFilter === '全部' || c.potential === b4PotentialFilter
+    const industryMatch = b4IndustryFilter === '全部' || c.industryCategory === b4IndustryFilter
     const searchMatch = b4Search === '' || c.name.includes(b4Search)
-    return industryMatch && potentialMatch && searchMatch
+    const cdbidMatch = b4CdbidSearch === '' || c.cdbid.includes(b4CdbidSearch)
+    return industryMatch && searchMatch && cdbidMatch
   })
 
   const filteredAssocs = assocMarkerData.filter(a => {
@@ -658,8 +631,8 @@ export default function TerritoryDashboard() {
   })
 
   const filteredPartners = partnerData.filter(p => {
-    if (partnerFilter !== '全部' && p.level !== partnerFilter) return false
-    if (partnerSearch && !p.name.includes(partnerSearch)) return false
+    if (partnerSearch && !p.name.includes(partnerSearch) && !p.channelCode.includes(partnerSearch)) return false
+    if (partnerOutreachFilter !== '全部' && p.outreach !== partnerOutreachFilter) return false
     return true
   })
 
@@ -712,13 +685,27 @@ export default function TerritoryDashboard() {
               <span className="section-card-title">辖区总览</span>
             </div>
             <div className="territory-overview-stats">
-              <div className="overview-stat-item">
-                <div className="overview-stat-label">辖区产能 Revenue</div>
-                <div className="overview-stat-value">¥2,850万</div>
-                <div className="overview-stat-trend up">+12.5% 环比</div>
+              {/* ASTI 指标 - 矮卡片 */}
+              <div className="overview-stat-item overview-item-short">
+                <div className="overview-stat-label">ASTI QTD（台）</div>
+                <div className="overview-stat-value">3,280</div>
+                <div className="overview-stat-trend up">+8.2% 环比</div>
               </div>
-              <div className="overview-stat-item">
-                <div className="overview-stat-label">渠道激活数量</div>
+              <div className="overview-stat-item overview-item-short">
+                <div className="overview-stat-label">ASTI Target</div>
+                <div className="overview-stat-value">4,000</div>
+                <div className="overview-stat-trend">季度目标</div>
+              </div>
+              <div className="overview-stat-item overview-item-short">
+                <div className="overview-stat-label">ASTI达成率</div>
+                <div className="overview-stat-value">82%</div>
+                <div className="channel-progress-bar">
+                  <div className="channel-progress-fill" style={{ width: '82%' }} />
+                </div>
+              </div>
+              {/* 渠道激活 + B4客户 - 高卡片 */}
+              <div className="overview-stat-item overview-item-tall">
+                <div className="overview-stat-label">L1渠道激活情况（辖区计划任务周期内）</div>
                 <div className="overview-stat-value">14 / 20</div>
                 <div className="channel-progress-bar">
                   <div className="channel-progress-fill" style={{ width: '70%' }} />
@@ -728,7 +715,7 @@ export default function TerritoryDashboard() {
                   <span>未激活 6</span>
                 </div>
               </div>
-              <div className="overview-stat-item">
+              <div className="overview-stat-item overview-item-tall">
                 <div className="overview-stat-label">B4 客户数量</div>
                 <div className="overview-stat-value">32 家</div>
                 <div className="overview-stat-sub">已触达 20 家 · 未触达 12 家</div>
@@ -745,41 +732,42 @@ export default function TerritoryDashboard() {
             <span className="leads-card-count">共 {filteredPartners.length} 家</span>
           </div>
           <div className="filter-bar">
-            <input className="filter-input" placeholder="搜索伙伴名称..." value={partnerSearch} onChange={e => setPartnerSearch(e.target.value)} />
-            <select className="filter-select" value={partnerFilter} onChange={e => setPartnerFilter(e.target.value)}>
-              <option value="全部">全部等级</option>
-              <option value="钻石">钻石</option>
-              <option value="金牌">金牌</option>
-              <option value="银牌">银牌</option>
-              <option value="铜牌">铜牌</option>
-              <option value="注册">注册</option>
+            <input className="filter-input" placeholder="搜索渠道名称或编码..." value={partnerSearch} onChange={e => setPartnerSearch(e.target.value)} />
+            <select className="filter-select" value={partnerPeriodFilter} onChange={e => setPartnerPeriodFilter(e.target.value)}>
+              <option value="全部">全部周期</option>
+              <option value="2026-05">2026-05</option>
+              <option value="2026-04">2026-04</option>
+              <option value="2026-03">2026-03</option>
+            </select>
+            <select className="filter-select" value={partnerOutreachFilter} onChange={e => setPartnerOutreachFilter(e.target.value)}>
+              <option value="全部">全部触达</option>
+              <option value="OS">OS</option>
+              <option value="IS">IS</option>
+              <option value="BPP">BPP</option>
             </select>
           </div>
           <div className="partner-table-wrapper">
             <table className="partner-table">
-              <thead><tr><th>伙伴名称</th><th>等级</th><th>月STI</th><th>锁定率</th><th>承载率</th><th>状态</th><th>拜访情况</th><th>最近拜访</th></tr></thead>
+              <thead><tr><th>渠道城市</th><th>渠道编码</th><th>渠道名称</th><th>签约级别</th><th>当前财季承诺量</th><th>当季度销量</th><th>上季度销量</th><th>近一年销量</th><th>渠道省份</th><th>战区名称</th><th>辖区</th><th>签约类型</th><th>是否激活</th><th>触达方式</th></tr></thead>
               <tbody>
-                {filteredPartners.map(p => {
-                  const visit = getPartnerVisit(p.id)
-                  return (
-                    <tr key={p.id}>
-                      <td><span className="partner-name-link" onClick={() => openPartnerDrill(p)}>{p.name}</span></td>
-                      <td><span className={`partner-lvl lvl-${levelClass(p.level)}`}>{p.level}</span></td>
-                      <td>{p.monthlySTI}台</td>
-                      <td>{p.lockRate}%</td>
-                      <td>{p.attachRate}%</td>
-                      <td><span className={`partner-dot ${p.status === '活跃' ? 'dot-active' : p.status === '一般' ? 'dot-normal' : 'dot-silent'}`} />{p.status}</td>
-                      <td><span className={`partner-visit-status ${getPartnerVisitStatusClass(visit)}`}>{getPartnerVisitStatus(visit)}</span></td>
-                      <td>
-                        {visit ? (
-                          <span className="partner-visit-link" onClick={() => openVisitDrill(visit)}>{visit.visitDate}</span>
-                        ) : (
-                          <span className="partner-visit-none">—</span>
-                        )}
-                      </td>
-                    </tr>
-                  )
-                })}
+                {filteredPartners.map(p => (
+                  <tr key={p.id}>
+                    <td>{p.city}</td>
+                    <td><span className="partner-code">{p.channelCode}</span></td>
+                    <td><span className="partner-name-link">{p.name}</span></td>
+                    <td><span className={`partner-lvl lvl-${levelClass(p.level)}`}>{p.level}</span></td>
+                    <td>{p.quarterlyCommit}</td>
+                    <td style={{ fontWeight: 600, color: p.quarterlySales >= p.quarterlyCommit * 0.8 ? 'var(--success)' : 'var(--warning)' }}>{p.quarterlySales}</td>
+                    <td>{p.lastQuarterSales}</td>
+                    <td>{p.yearlySales}</td>
+                    <td>{p.province}</td>
+                    <td>{p.warZone}</td>
+                    <td>{p.district}</td>
+                    <td><span className="partner-sign-type">{p.signType}</span></td>
+                    <td><span className={`partner-active ${p.isActive ? 'active-yes' : 'active-no'}`}>{p.isActive ? '是' : '否'}</span></td>
+                    <td><span className={`partner-outreach ${p.outreach ? 'outreach-' + p.outreach.toLowerCase() : 'outreach-empty'}`}>{p.outreach || '——'}</span></td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
@@ -829,57 +817,43 @@ export default function TerritoryDashboard() {
               <div className="b4-sub-card-title">客户列表</div>
               <div className="b4-filter-bar">
                 <select className="b4-filter-select" value={b4IndustryFilter} onChange={e => setB4IndustryFilter(e.target.value)}>
-                  <option value="全部">全部行业</option>
+                  <option value="全部">全部行业门类</option>
                   <option value="制造业">制造业</option>
-                  <option value="金融">金融</option>
-                  <option value="半导体">半导体</option>
-                  <option value="汽车">汽车</option>
-                  <option value="互联网">互联网</option>
-                  <option value="医药">医药</option>
-                  <option value="能源">能源</option>
-                  <option value="园区开发">园区开发</option>
-                </select>
-                <select className="b4-filter-select" value={b4PotentialFilter} onChange={e => setB4PotentialFilter(e.target.value)}>
-                  <option value="全部">全部潜力</option>
-                  <option value="高">高潜力</option>
-                  <option value="中">中潜力</option>
-                  <option value="低">低潜力</option>
+                  <option value="金融业">金融业</option>
+                  <option value="信息传输、软件和信息技术服务业">信息传输、软件和信息技术服务业</option>
+                  <option value="批发和零售业">批发和零售业</option>
+                  <option value="交通运输、仓储和邮政业">交通运输、仓储和邮政业</option>
+                  <option value="建筑业">建筑业</option>
+                  <option value="房地产业">房地产业</option>
+                  <option value="住宿和餐饮业">住宿和餐饮业</option>
+                  <option value="电力、热力、燃气及水生产和供应业">电力、热力、燃气及水生产和供应业</option>
                 </select>
                 <input className="b4-search-input" placeholder="搜索客户名称..." value={b4Search} onChange={e => setB4Search(e.target.value)} />
+                <input className="b4-search-input" placeholder="CDBID精准搜索..." value={b4CdbidSearch} onChange={e => setB4CdbidSearch(e.target.value)} style={{ flex: 0.8 }} />
               </div>
               <div className="b4-table-wrapper b4-right-scroll">
                 <table className="b4-table">
                   <thead>
                     <tr>
+                      <th>战区</th>
                       <th>客户名称</th>
-                      <th>行业</th>
-                      <th>潜力</th>
-                      <th>当前收入(万)</th>
-                      <th>潜力收入(万)</th>
-                      <th>最近联系</th>
-                      <th>触达方式</th>
-                      <th>触达时间</th>
-                      <th>线索数</th>
-                      <th>商机数</th>
+                      <th>CDBID</th>
+                      <th>所属城市</th>
+                      <th>国标行业门类</th>
+                      <th>注册资本</th>
+                      <th>成立日期</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {sortB4Customers(filteredB4Customers).map(c => (
-                      <tr key={c.id} className={c.outreachType !== '未触达' ? 'b4-row-highlight' : ''}>
+                    {filteredB4Customers.map(c => (
+                      <tr key={c.id}>
+                        <td><span className="b4-warzone">{c.warZone}</span></td>
                         <td><span className="b4-customer-name">{c.name}</span></td>
-                        <td><span className="b4-industry">{c.industry}</span></td>
-                        <td><span className={`b4-potential potential-${c.potential}`}>{c.potential}</span></td>
-                        <td style={{ fontWeight: 600, color: c.currentRevenue > 0 ? 'var(--text-primary)' : 'var(--text-muted)' }}>{c.currentRevenue}</td>
-                        <td style={{ fontWeight: 700, color: 'var(--accent)' }}>{c.potentialRevenue}</td>
-                        <td style={{ fontSize: 11 }}>{c.lastContact}</td>
-                        <td>
-                          <span className={`b4-outreach-type outreach-${c.outreachType === '嗨掌柜' ? 'hiz' : c.outreachType === '辖区经理拜访' ? 'visit' : 'none'}`}>
-                            {c.outreachType}
-                          </span>
-                        </td>
-                        <td style={{ fontSize: 11, color: c.outreachType === '未触达' ? 'var(--text-muted)' : 'var(--text-secondary)' }}>{c.outreachTime}</td>
-                        <td style={{ fontWeight: 600, color: c.leadCount > 0 ? 'var(--accent)' : 'var(--text-muted)' }}>{c.leadCount}</td>
-                        <td style={{ fontWeight: 600, color: c.opportunityCount > 0 ? 'var(--success)' : 'var(--text-muted)' }}>{c.opportunityCount}</td>
+                        <td><span className="b4-cdbid">{c.cdbid}</span></td>
+                        <td>{c.city}</td>
+                        <td><span className="b4-industry">{c.industryCategory}</span></td>
+                        <td style={{ fontWeight: 600 }}>{c.registeredCapital}</td>
+                        <td style={{ fontSize: 11 }}>{c.foundedDate}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -1013,101 +987,43 @@ export default function TerritoryDashboard() {
               })()}
 
               {drill.level === 'partner' && (() => {
-                const partner = drill.data as ChannelPartner
-                const info = partnerDistrictMap[partner.id]
-                const orders = getPartnerOrders(partner.id)
-                const ptasks = getPartnerTasks(partner.id)
-                const pvisits = getPartnerVisits(partner.id)
+                const partner = drill.data as any
                 return (
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 12 }}>
                       <div style={{ background: 'var(--bg-body)', padding: 12, borderRadius: 8 }}>
-                        <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 4 }}>等级</div>
+                        <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 4 }}>渠道编码</div>
+                        <div style={{ fontSize: 14, fontWeight: 600 }}>{partner.channelCode}</div>
+                      </div>
+                      <div style={{ background: 'var(--bg-body)', padding: 12, borderRadius: 8 }}>
+                        <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 4 }}>签约级别</div>
                         <div style={{ fontSize: 14, fontWeight: 600 }}>{partner.level}</div>
                       </div>
                       <div style={{ background: 'var(--bg-body)', padding: 12, borderRadius: 8 }}>
                         <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 4 }}>所属辖区</div>
-                        <div style={{ fontSize: 14, fontWeight: 600 }}>{info?.district || '-'}</div>
+                        <div style={{ fontSize: 14, fontWeight: 600 }}>{partner.district || '-'}</div>
                       </div>
                       <div style={{ background: 'var(--bg-body)', padding: 12, borderRadius: 8 }}>
-                        <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 4 }}>辖区经理</div>
-                        <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--accent)' }}>{info?.manager || '-'}</div>
-                      </div>
-                      <div style={{ background: 'var(--bg-body)', padding: 12, borderRadius: 8 }}>
-                        <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 4 }}>状态</div>
-                        <div style={{ fontSize: 14, fontWeight: 600 }}>{partner.status}</div>
+                        <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 4 }}>签约类型</div>
+                        <div style={{ fontSize: 14, fontWeight: 600 }}>{partner.signType}</div>
                       </div>
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 12 }}>
                       <div style={{ background: 'var(--bg-body)', padding: 12, borderRadius: 8 }}>
-                        <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 4 }}>月STI</div>
-                        <div style={{ fontSize: 18, fontWeight: 700, color: 'var(--brand-600)' }}>{partner.monthlySTI}台</div>
+                        <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 4 }}>当前财季承诺量</div>
+                        <div style={{ fontSize: 18, fontWeight: 700, color: 'var(--brand-600)' }}>{partner.quarterlyCommit}台</div>
                       </div>
                       <div style={{ background: 'var(--bg-body)', padding: 12, borderRadius: 8 }}>
-                        <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 4 }}>月SO</div>
-                        <div style={{ fontSize: 18, fontWeight: 700 }}>{partner.monthlySO}台</div>
+                        <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 4 }}>当季度销量</div>
+                        <div style={{ fontSize: 18, fontWeight: 700 }}>{partner.quarterlySales}台</div>
                       </div>
                       <div style={{ background: 'var(--bg-body)', padding: 12, borderRadius: 8 }}>
-                        <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 4 }}>锁定率</div>
-                        <div style={{ fontSize: 18, fontWeight: 700, color: partner.lockRate >= 70 ? 'var(--success)' : partner.lockRate >= 60 ? 'var(--warning)' : 'var(--danger)' }}>{partner.lockRate}%</div>
+                        <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 4 }}>上季度销量</div>
+                        <div style={{ fontSize: 18, fontWeight: 700 }}>{partner.lastQuarterSales}台</div>
                       </div>
                       <div style={{ background: 'var(--bg-body)', padding: 12, borderRadius: 8 }}>
-                        <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 4 }}>承载率</div>
-                        <div style={{ fontSize: 18, fontWeight: 700, color: partner.attachRate >= 40 ? 'var(--success)' : partner.attachRate >= 30 ? 'var(--warning)' : 'var(--danger)' }}>{partner.attachRate}%</div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 8 }}>📦 近期订单（{orders.length}笔）</div>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                        {orders.map(o => (
-                          <div key={o.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 12px', background: 'var(--bg-body)', borderRadius: 6, fontSize: 12 }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                              <span style={{ fontWeight: 500 }}>{o.product}</span>
-                              <span style={{ color: 'var(--text-muted)' }}>×{o.quantity}</span>
-                            </div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: 12, color: 'var(--text-muted)' }}>
-                              <span style={{ fontWeight: 600 }}>¥{(o.amount / 10000).toFixed(1)}万</span>
-                              <span style={{ fontSize: 10, padding: '1px 6px', borderRadius: 4, background: o.status === '已签收' ? 'var(--success-light)' : o.status === '运输中' || o.status === '生产中' ? 'var(--warning-light)' : 'var(--accent-light)', color: o.status === '已签收' ? 'var(--success)' : o.status === '运输中' || o.status === '生产中' ? 'var(--warning)' : 'var(--accent)', fontWeight: 600 }}>{o.status}</span>
-                              <span>{o.date}</span>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div>
-                      <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 8 }}>📝 关联任务（{ptasks.length}条）</div>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                        {ptasks.map(t => (
-                          <div key={t.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 12px', background: 'var(--bg-body)', borderRadius: 6, fontSize: 12, cursor: 'pointer' }} onClick={() => openTaskDrill(t)}>
-                            <div style={{ fontWeight: 500 }}>{t.content}</div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: 12, color: 'var(--text-muted)' }}>
-                              <span style={{ fontSize: 10, padding: '1px 6px', borderRadius: 4, background: t.priority === '高' ? 'var(--danger-light)' : t.priority === '中' ? 'var(--warning-light)' : 'var(--bg-surface)', color: t.priority === '高' ? 'var(--danger)' : t.priority === '中' ? 'var(--warning)' : 'var(--text-muted)', fontWeight: 600 }}>{t.priority}</span>
-                              <span>截止：{t.dueDate}</span>
-                              <span>{t.status}</span>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div>
-                      <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 8 }}>🚶 拜访提醒（{pvisits.length}条）</div>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                        {pvisits.map(v => (
-                          <div key={v.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 12px', background: 'var(--bg-body)', borderRadius: 6, fontSize: 12 }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                              <span style={{ fontWeight: 500 }}>{v.companyName}</span>
-                              <span style={{ color: 'var(--text-muted)' }}>{v.contact}</span>
-                            </div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: 12, color: 'var(--text-muted)' }}>
-                              <span>{v.purpose}</span>
-                              <span style={{ fontSize: 10, padding: '1px 6px', borderRadius: 4, background: v.status === '已拜访' ? 'var(--success-light)' : 'var(--accent-light)', color: v.status === '已拜访' ? 'var(--success)' : 'var(--accent)', fontWeight: 600 }}>{v.status}</span>
-                              <span>{v.date} {v.time}</span>
-                            </div>
-                          </div>
-                        ))}
+                        <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 4 }}>近一年销量</div>
+                        <div style={{ fontSize: 18, fontWeight: 700 }}>{partner.yearlySales}台</div>
                       </div>
                     </div>
                   </div>
