@@ -783,7 +783,22 @@ export default function TerritoryDashboard() {
           <div className="b4-management-content">
             {/* 左侧子卡片：两会一园 - 标签页 */}
             <div className="b4-sub-card b4-left-card">
-              <div className="b4-sub-card-title">两会一园</div>
+              <div className="b4-sub-card-header">
+                <span className="b4-sub-card-title">两会一园</span>
+                <a
+                  className="b4-download-btn"
+                  href="/两会一园周报.xlsx"
+                  download="两会一园周报.xlsx"
+                  onClick={(e) => {
+                    fetch('/两会一园周报.xlsx', { method: 'HEAD' }).catch(() => {
+                      alert('文件不存在')
+                      e.preventDefault()
+                    })
+                  }}
+                >
+                  下载完整周报
+                </a>
+              </div>
               <div className="b4-tabs">
                 <button className={`b4-tab ${leftTab === '阵地建联' ? 'active' : ''}`} onClick={() => setLeftTab('阵地建联')}>阵地建联</button>
                 <button className={`b4-tab ${leftTab === '客户经营' ? 'active' : ''}`} onClick={() => setLeftTab('客户经营')}>客户经营</button>

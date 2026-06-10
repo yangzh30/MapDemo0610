@@ -545,13 +545,33 @@
   min-width: 0;
   overflow: hidden;
 }
+.b4-sub-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--border-light);
+}
 .b4-sub-card-title {
   font-size: 13px;
   font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: var(--space-sm);
-  padding-bottom: var(--space-sm);
-  border-bottom: 1px solid var(--border-light);
+}
+.b4-download-btn {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 150ms;
+  white-space: nowrap;
+}
+.b4-download-btn:hover {
+  background: var(--accent-hover);
 }
 .b4-tabs {
   display: flex;
