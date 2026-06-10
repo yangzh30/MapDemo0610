@@ -30,7 +30,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build -- --base /Map_Demo0531/
+        run: npm run build -- --base /MapDemo0610/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

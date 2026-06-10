@@ -562,6 +562,7 @@ export default function TerritoryDashboard() {
   const [partnerData] = useState(partnerMarkerData)
   const [assocFilter, setAssocFilter] = useState<string>('全部')
   const [assocSearch, setAssocSearch] = useState('')
+  const [leftTab, setLeftTab] = useState<'阵地建联' | '客户经营' | '阵地详情'>('阵地建联')
   const [partnerPeriodFilter, setPartnerPeriodFilter] = useState<string>('全部')
   const [partnerOutreachFilter, setPartnerOutreachFilter] = useState<string>('全部')
   const [partnerSearch, setPartnerSearch] = useState('')
@@ -703,16 +704,16 @@ export default function TerritoryDashboard() {
                   <div className="channel-progress-fill" style={{ width: '82%' }} />
                 </div>
               </div>
-              {/* 渠道激活 + B4客户 - 高卡片 */}
+              {/* 辖区本地承载率 */}
               <div className="overview-stat-item overview-item-tall">
-                <div className="overview-stat-label">L1渠道激活情况（辖区计划任务周期内）</div>
-                <div className="overview-stat-value">14 / 20</div>
+                <div className="overview-stat-label">辖区本地承载率</div>
+                <div className="overview-stat-value">68.5%</div>
                 <div className="channel-progress-bar">
-                  <div className="channel-progress-fill" style={{ width: '70%' }} />
+                  <div className="channel-progress-fill" style={{ width: '68.5%' }} />
                 </div>
                 <div className="channel-progress-labels">
-                  <span>已激活 14</span>
-                  <span>未激活 6</span>
+                  <span>本地交付 2,246台</span>
+                  <span>总销量 3,280台</span>
                 </div>
               </div>
               <div className="overview-stat-item overview-item-tall">
@@ -780,35 +781,103 @@ export default function TerritoryDashboard() {
             <span className="triple-card-badge">共 {filteredB4Customers.length} 家</span>
           </div>
           <div className="b4-management-content">
-            {/* 左侧子卡片：两会一园 */}
+            {/* 左侧子卡片：两会一园 - 标签页 */}
             <div className="b4-sub-card b4-left-card">
               <div className="b4-sub-card-title">两会一园</div>
-              <div className="filter-bar">
-                <input className="filter-input" placeholder="搜索名称..." value={assocSearch} onChange={e => setAssocSearch(e.target.value)} />
-                <select className="filter-select" value={assocFilter} onChange={e => setAssocFilter(e.target.value)}>
-                  <option value="全部">全部状态</option>
-                  <option value="已签约">已签约</option>
-                  <option value="洽谈中">洽谈中</option>
-                  <option value="待开发">待开发</option>
-                </select>
+              <div className="b4-tabs">
+                <button className={`b4-tab ${leftTab === '阵地建联' ? 'active' : ''}`} onClick={() => setLeftTab('阵地建联')}>阵地建联</button>
+                <button className={`b4-tab ${leftTab === '客户经营' ? 'active' : ''}`} onClick={() => setLeftTab('客户经营')}>客户经营</button>
+                <button className={`b4-tab ${leftTab === '阵地详情' ? 'active' : ''}`} onClick={() => setLeftTab('阵地详情')}>阵地详情</button>
               </div>
-              <div className="scrollable-list b4-left-scroll">
-                {filteredAssocs.map(item => (
-                  <div key={item.id} style={{ display: 'flex', flexDirection: 'column', gap: 4, padding: '8px 12px', borderRadius: 'var(--radius)', cursor: 'pointer', transition: 'background 150ms', background: 'transparent', borderBottom: '1px solid var(--border-light)' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <span className={`assoc-type ${item.type === '协会' ? 'type-assoc' : item.type === '商会' ? 'type-chamber' : 'type-park'}`}>{item.type}</span>
-                      <span style={{ fontWeight: 500, color: 'var(--accent)', cursor: 'pointer' }} onClick={(e) => { e.stopPropagation(); openAssocDrill(item) }}>{item.name}</span>
-                      <span style={{ fontWeight: 600, color: 'var(--brand-600)', cursor: 'pointer' }} onClick={(e) => { e.stopPropagation(); openAssocDrill(item) }}>{item.memberCount} 家</span>
-                      <span className={`assoc-status ${item.status === '已签约' ? 'as-signed' : item.status === '洽谈中' ? 'as-negotiating' : 'as-pending'}`}>{item.status}</span>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 11, color: 'var(--text-secondary)' }}>
-                      <span>👤 {item.contact}</span>
-                      <span>📞 {item.contactPhone}</span>
-                      <span>📍 {item.address}</span>
-                      <span>🤝 {item.signedPartner || '——'}</span>
-                    </div>
+              <div className="b4-tab-content">
+                {leftTab === '阵地建联' && (
+                  <div className="b4-table-wrapper b4-left-scroll">
+                    <table className="b4-table">
+                      <thead>
+                        <tr><th>战区</th><th>目标</th><th>已建联</th><th>可经营</th><th>季度完成率</th><th>有效客户名录</th><th>已启动经营</th></tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>华东</td><td>60</td><td>26</td><td>26</td><td>43%</td><td>9546</td><td>5</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
-                ))}
+                )}
+                {leftTab === '客户经营' && (
+                  <div className="b4-table-wrapper b4-left-scroll">
+                    <table className="b4-table b4-table-grouped">
+                      <thead>
+                        <tr>
+                          <th colSpan={3} className="group-header">B4客户激活</th>
+                          <th colSpan={3} className="group-header">B4订单Rev（$M）</th>
+                        </tr>
+                        <tr>
+                          <th>Q1目标</th><th>已激活</th><th className="group-end">Q1完成率</th>
+                          <th>Q1目标</th><th>已达成</th><th>Q1完成率</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>306</td><td>48</td><td className="group-end">16%</td>
+                          <td>1.1</td><td>0.78</td><td>71%</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+                {leftTab === '阵地详情' && (
+                  <div className="b4-table-wrapper b4-left-scroll">
+                    <table className="b4-table b4-table-grouped">
+                      <thead>
+                        <tr>
+                          <th colSpan={2} className="group-header">FY26Q1</th>
+                          <th colSpan={4} className="group-header">线索</th>
+                          <th colSpan={3} className="group-header">商机</th>
+                          <th colSpan={3} className="group-header">交付</th>
+                        </tr>
+                        <tr>
+                          <th>园区/协会</th><th className="group-end">联营伙伴</th>
+                          <th>IQL条数</th><th>MQL条数</th><th>SQL条数</th><th className="group-end">SQL金额（万）</th>
+                          <th>条数</th><th>PC台数</th><th className="group-end">总金额（万元）</th>
+                          <th>家数</th><th>PC台数</th><th>总金额（万元）</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>上海浦东软件园</td><td className="group-end">上海辰晔信息科技有限公司</td>
+                          <td>66</td><td>66</td><td>66</td><td className="group-end">815.4</td>
+                          <td>66</td><td>638</td><td className="group-end">815.4</td>
+                          <td>25</td><td>425</td><td>512.1</td>
+                        </tr>
+                        <tr>
+                          <td>中安创谷科技园</td><td className="group-end">安徽先端信息技术有限公司</td>
+                          <td>49</td><td>40</td><td>3</td><td className="group-end">0.0</td>
+                          <td>0</td><td>0</td><td className="group-end">0.0</td>
+                          <td>1</td><td>1</td><td>0.6</td>
+                        </tr>
+                        <tr>
+                          <td>安徽科学家企业家协会</td><td className="group-end">合肥江佰商贸有限公司</td>
+                          <td>6</td><td>6</td><td>6</td><td className="group-end">54.0</td>
+                          <td>6</td><td>72</td><td className="group-end">54.0</td>
+                          <td>4</td><td>56</td><td>33.4</td>
+                        </tr>
+                        <tr>
+                          <td>上海远中产业园</td><td className="group-end">上海致柏商贸有限公司</td>
+                          <td>54</td><td>15</td><td>2</td><td className="group-end">200.0</td>
+                          <td>2</td><td>600</td><td className="group-end">200.0</td>
+                          <td>0</td><td>0</td><td>0.0</td>
+                        </tr>
+                        <tr>
+                          <td>苏州大学科技创新产业园</td><td className="group-end">苏州瑞斯莱客电子科技有限公司</td>
+                          <td>63</td><td>36</td><td>12</td><td className="group-end">52.0</td>
+                          <td>12</td><td>174</td><td className="group-end">52.0</td>
+                          <td>5</td><td>101</td><td>70.6</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                )}
               </div>
             </div>
             {/* 右侧子卡片：B4客户列表 */}
