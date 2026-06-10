@@ -719,7 +719,6 @@ export default function TerritoryDashboard() {
               <div className="overview-stat-item overview-item-tall">
                 <div className="overview-stat-label">B4 客户数量</div>
                 <div className="overview-stat-value">32 家</div>
-                <div className="overview-stat-sub">已触达 20 家 · 未触达 12 家</div>
               </div>
             </div>
           </div>
